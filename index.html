@@ -712,17 +712,14 @@ const hero = (() => {
       g.position.y = lerp(g.position.y, mode === 'explode' ? g.userData.ex : 0, .08);
     }
 
-    /* scroll + parallax camera, framed to fit whatever aspect the screen is */
+    /* scroll + parallax camera */
     const p = clamp(scrollY / innerHeight, 0, 1);
-    const aim = lerp(5.5, 3, p);
-    const fit = clamp(1.6 / (camera.aspect || 1.6), 1, 2.4);   // portrait → stand further off
-    const fitY = 1 + (fit - 1) * .35;
-    const camX = (lerp(26, 12, p) + (RM ? 0 : mouse.x * -4)) * fit;
-    const camY = aim + (lerp(13, 24, p) - aim + pitch * 22 + (RM ? 0 : mouse.y * -2.5)) * fitY;
+    const camX = lerp(26, 12, p) + (RM ? 0 : mouse.x * -4);
+    const camY = lerp(13, 24, p) + pitch * 22 + (RM ? 0 : mouse.y * -2.5);
     camera.position.x = lerp(camera.position.x, camX, .06);
     camera.position.y = lerp(camera.position.y, camY, .06);
-    camera.position.z = lerp(camera.position.z, lerp(33, 40, p) * fit, .06);
-    camera.lookAt(0, aim, 0);
+    camera.position.z = lerp(camera.position.z, lerp(33, 40, p), .06);
+    camera.lookAt(0, lerp(5.5, 3, p), 0);
     sun.target.position.set(0, 3, 0);
 
     renderer.render(scene, camera);
@@ -1095,6 +1092,20 @@ const plan = (() => {
   new IntersectionObserver(([e]) => visible = e.isIntersecting, { threshold: .05 })
     .observe(document.getElementById('plan'));
 
+  /* ---- framing ------------------------------------------------------------
+     The model spins, so the frustum must clear its horizontal RADIUS, not its
+     width — at 45° the 15.6 x 11.6 plinth presents its 19.4 diagonal.        */
+  const FIT = {
+    r: Math.hypot(7.8, 5.8),                       // half-diagonal of the plinth
+    yTop: 2.4,                                     // highest thing drawn (labels)
+    elev: Math.atan2(14, Math.hypot(15, 17)),      // iso camera elevation
+    pad: 1.07
+  };
+  const isoW = FIT.r * FIT.pad;
+  const isoH = (FIT.r * Math.sin(FIT.elev) + FIT.yTop * Math.cos(FIT.elev)) * FIT.pad;
+  const topW = 7.8 * FIT.pad, topH = 5.8 * FIT.pad;   // top view is axis-aligned
+  let topZoom = 1.2;
+
   const DIM = new THREE.Color(0x2f3138);
   function frame() {
     if (!visible) return;
@@ -1103,8 +1114,10 @@ const plan = (() => {
     const pr = renderer.getPixelRatio();
     if (canvas.width !== Math.round(w * pr) || canvas.height !== Math.round(h * pr)) {
       renderer.setSize(w, h, false);
-      const a = w / h, f = Math.max(8.6, 9.6 / a);
+      const a = w / h;
+      const f = Math.max(isoH, isoW / a);            // satisfy both axes at any aspect
       camera.left = -f * a; camera.right = f * a; camera.top = f; camera.bottom = -f;
+      topZoom = Math.min(f / topH, (f * a) / topW);  // fill the frame in plan view
       camera.updateProjectionMatrix();
     }
 
@@ -1120,7 +1133,7 @@ const plan = (() => {
     /* camera + orientation */
     const goal = view === 'top' ? TOP : ISO;
     camera.position.lerp(goal, .07);
-    camera.zoom = lerp(camera.zoom, view === 'top' ? 1.24 : 1, .07);
+    camera.zoom = lerp(camera.zoom, view === 'top' ? topZoom : 1, .07);
     camera.updateProjectionMatrix();
     camera.lookAt(0, 0, 0);
     if (view === 'top') spin = lerp(spin, 0, .07);
