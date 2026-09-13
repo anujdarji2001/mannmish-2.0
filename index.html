@@ -712,14 +712,17 @@ const hero = (() => {
       g.position.y = lerp(g.position.y, mode === 'explode' ? g.userData.ex : 0, .08);
     }
 
-    /* scroll + parallax camera */
+    /* scroll + parallax camera, framed to fit whatever aspect the screen is */
     const p = clamp(scrollY / innerHeight, 0, 1);
-    const camX = lerp(26, 12, p) + (RM ? 0 : mouse.x * -4);
-    const camY = lerp(13, 24, p) + pitch * 22 + (RM ? 0 : mouse.y * -2.5);
+    const aim = lerp(5.5, 3, p);
+    const fit = clamp(1.6 / (camera.aspect || 1.6), 1, 2.4);   // portrait → stand further off
+    const fitY = 1 + (fit - 1) * .35;
+    const camX = (lerp(26, 12, p) + (RM ? 0 : mouse.x * -4)) * fit;
+    const camY = aim + (lerp(13, 24, p) - aim + pitch * 22 + (RM ? 0 : mouse.y * -2.5)) * fitY;
     camera.position.x = lerp(camera.position.x, camX, .06);
     camera.position.y = lerp(camera.position.y, camY, .06);
-    camera.position.z = lerp(camera.position.z, lerp(33, 40, p), .06);
-    camera.lookAt(0, lerp(5.5, 3, p), 0);
+    camera.position.z = lerp(camera.position.z, lerp(33, 40, p) * fit, .06);
+    camera.lookAt(0, aim, 0);
     sun.target.position.set(0, 3, 0);
 
     renderer.render(scene, camera);

@@ -257,6 +257,8 @@ footer.site{padding:34px 0;border-top:1px solid var(--line-soft)}
   .cards{grid-template-columns:1fr 1fr}
   .quotes{grid-template-columns:1fr}
   .hero__copy{max-width:100%}
+  .hero__in{justify-content:flex-end;padding-bottom:132px}
+  .hint{display:none}
   .scroller{display:none}
 }
 @media(max-width:760px){
@@ -266,11 +268,26 @@ footer.site{padding:34px 0;border-top:1px solid var(--line-soft)}
   .cards{grid-template-columns:1fr}
   .srv__hd{grid-template-columns:44px 1fr 40px;gap:12px}
   .srv__cols{grid-template-columns:1fr;gap:18px}
-  .hud{gap:10px;bottom:18px}
-  .sun{min-width:0;width:100%}
   .plan__stage{aspect-ratio:1/1}
-  .hero{height:92svh}
-  .hero__veil{background:linear-gradient(0deg,rgba(10,10,11,.94) 18%,rgba(10,10,11,.2) 70%)}
+
+  /* hero: model up top, copy above the controls, nothing overlapping */
+  .hero{height:100svh;min-height:580px}
+  .hero__in{justify-content:flex-end;padding-bottom:152px}
+  .hero__veil{background:linear-gradient(0deg,rgba(10,10,11,.97) 0%,rgba(10,10,11,.88) 26%,
+              rgba(10,10,11,.3) 58%,rgba(10,10,11,0) 78%),
+              linear-gradient(180deg,rgba(10,10,11,.6) 0%,rgba(10,10,11,0) 14%)}
+  .hero h1{font-size:clamp(38px,11.5vw,62px);margin:14px 0 16px;line-height:1.05}
+  .hero .lede{font-size:14.5px;max-width:100%}
+  .hero__cta{margin-top:20px;gap:9px;width:100%}
+  .hero__cta .btn{padding:12px 17px;flex:1 1 auto;justify-content:center}
+  .hud{left:var(--pad);right:var(--pad);bottom:16px;flex-direction:column;align-items:stretch;gap:8px}
+  .panel{padding:9px}
+  .modes{gap:3px}
+  .modes button{flex:1;text-align:center;padding:9px 4px;letter-spacing:.1em}
+  .sun{min-width:0;width:100%;gap:10px}
+  .sun label{font-size:10px}
+  .sun output{width:46px;font-size:10px}
+  .hint{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
