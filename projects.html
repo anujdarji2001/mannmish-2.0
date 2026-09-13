@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Work — Mannmish Design Studio</title>
+<meta name="description" content="Selected residential and interior projects by Mannmish Design Studio, Ahmedabad." />
+<link rel="icon" href="assets/logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div id="loader">
+  <div class="loader__inner">
+    <div class="loader__name">Mannmish<span style="color:var(--brass)">.</span></div>
+    <div class="loader__bar"><i id="ldBar"></i></div>
+    <div class="loader__pct mono"><span>Loading</span><span id="ldPct">0%</span></div>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.jpg" alt="Mannmish Design Studio" />
+      <span><b>Mannmish</b><span>Design Studio</span></span>
+    </a>
+    <nav class="nav__links mono">
+      <a href="index.html">Home</a>
+      <a href="about.html">Studio</a>
+      <a href="projects.html" class="on">Work</a>
+      <a href="index.html#services">Expertise</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="btn mono" href="contact.html"><i></i>Start a project</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+  </div>
+</header>
+<div class="menu" id="menu"><a href="index.html">Home</a><a href="about.html">Studio</a><a href="projects.html">Work</a><a href="index.html#services">Expertise</a><a href="contact.html">Contact</a></div>
+
+<main>
+<section class="phero">
+  <div class="wrap">
+    <p class="eyebrow mono rv">Selected Work</p>
+    <h1 class="display rv" data-d="1">Rooms we are<br/>still proud of.</h1>
+    <p class="lede rv" data-d="2" style="margin-top:26px">A visual journey through our design philosophy — residences and interiors delivered across Ahmedabad, drawn and built by the same studio.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="pfilter mono rv" id="pfilter">
+      <button class="on" data-cat="all">All work</button>
+      <button data-cat="res">Residential</button>
+      <button data-cat="int">Interiors</button>
+    </div>
+
+    <div class="pgrid" id="pgrid">
+      <!-- ▼ swap the images in assets/ and the meta values for the real project data -->
+      <article class="pj rv" data-cat="res">
+        <button class="pj__media" data-i="0" aria-label="View 4BHK Residence, Shilp 14">
+          <span class="pj__no mono">01</span>
+          <img src="assets/project-1.jpg" alt="4BHK Residence, Shilp 14" />
+          <span class="pj__view mono">View photo</span>
+        </button>
+        <div>
+          <p class="pj__kind mono">Residence · Ahmedabad</p>
+          <h3>4BHK Residence, Shilp 14</h3>
+          <p class="pj__desc">Sophisticated luxury meets modern elegance.</p>
+          <dl class="pj__meta">
+            <div><dt>Typology</dt><dd>4 BHK residence</dd></div>
+            <div><dt>Scope</dt><dd>Interiors &amp; execution</dd></div>
+            <div><dt>Status</dt><dd>Completed</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="pj rv" data-d="1" data-cat="res">
+        <button class="pj__media" data-i="1" aria-label="View 3BHK Residence, Shivanta Rigel">
+          <span class="pj__no mono">02</span>
+          <img src="assets/project-2.jpg" alt="3BHK Residence, Shivanta Rigel" loading="lazy" />
+          <span class="pj__view mono">View photo</span>
+        </button>
+        <div>
+          <p class="pj__kind mono">Residence · Ahmedabad</p>
+          <h3>3BHK Residence, Shivanta Rigel</h3>
+          <p class="pj__desc">Contemporary comfort with functional elegance.</p>
+          <dl class="pj__meta">
+            <div><dt>Typology</dt><dd>3 BHK residence</dd></div>
+            <div><dt>Scope</dt><dd>Design &amp; turnkey</dd></div>
+            <div><dt>Status</dt><dd>Completed</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="pj rv" data-d="2" data-cat="int">
+        <button class="pj__media" data-i="2" aria-label="View Hotwheels Themed Bedroom">
+          <span class="pj__no mono">03</span>
+          <img src="assets/project-3.jpg" alt="Hotwheels Themed Bedroom" loading="lazy" />
+          <span class="pj__view mono">View photo</span>
+        </button>
+        <div>
+          <p class="pj__kind mono">Interior · Themed</p>
+          <h3>Hotwheels Themed Bedroom</h3>
+          <p class="pj__desc">An immersive car-themed retreat for enthusiasts.</p>
+          <dl class="pj__meta">
+            <div><dt>Typology</dt><dd>Themed bedroom</dd></div>
+            <div><dt>Scope</dt><dd>Interiors &amp; joinery</dd></div>
+            <div><dt>Status</dt><dd>Completed</dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+    <p class="mono rv" id="pempty" style="display:none;color:var(--muted);padding:30px 0">No projects in this category yet.</p>
+  </div>
+</section>
+
+<section class="band band--alt">
+  <div class="wrap">
+    <div class="shead rv">
+      <div>
+        <p class="eyebrow mono"><span class="idx">02</span> &nbsp;What We Take On</p>
+        <h2 class="display">Four ways a project usually reaches us.</h2>
+      </div>
+    </div>
+    <div class="rows rv">
+      <div class="row"><span class="mono" style="color:var(--brass)">A / 01</span><b>Residential interiors</b><span>Apartments and bungalows, from layout to the last light fitting.</span><span class="mono">Turnkey</span></div>
+      <div class="row"><span class="mono" style="color:var(--brass)">A / 02</span><b>Architecture &amp; planning</b><span>New builds and redevelopment, with structure and services integrated.</span><span class="mono">Drawings + site</span></div>
+      <div class="row"><span class="mono" style="color:var(--brass)">A / 03</span><b>Commercial &amp; office</b><span>Workplaces and retail delivered around a live business calendar.</span><span class="mono">Fit-out</span></div>
+      <div class="row"><span class="mono" style="color:var(--brass)">A / 04</span><b>Themed &amp; bespoke rooms</b><span>Single rooms built around one idea — with custom joinery to match.</span><span class="mono">Bespoke</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <div class="contact__grid">
+      <div class="rv">
+        <p class="eyebrow mono">Next</p>
+        <h2 class="display">Your project could be <em>number four.</em></h2>
+        <div class="hero__cta">
+          <a class="btn btn--solid mono" href="contact.html"><i></i>Start a project</a>
+          <a class="btn mono" href="about.html">About the studio</a>
+        </div>
+      </div>
+      <dl class="info rv" data-d="1">
+        <div><dt>Mail</dt><dd><a href="mailto:mannmishdesignstudio@gmail.com">mannmishdesignstudio@gmail.com</a></dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+919662002521">+91 96620 02521</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Project photo">
+  <button class="lb__x mono" id="lbX" aria-label="Close">✕</button>
+  <figure class="lb__fig">
+    <div class="lb__img"><img id="lbImg" src="" alt="" /></div>
+    <figcaption class="lb__cap">
+      <div>
+        <p class="mono" id="lbKind" style="color:var(--brass)"></p>
+        <h3 id="lbTitle"></h3>
+      </div>
+      <div class="lb__nav">
+        <button id="lbPrev" aria-label="Previous project">←</button>
+        <button id="lbNext" aria-label="Next project">→</button>
+      </div>
+    </figcaption>
+  </figure>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <a class="brand" href="index.html">
+          <img src="assets/logo.jpg" alt="" />
+          <span><b>Mannmish</b><span>Design Studio</span></span>
+        </a>
+        <p>Where vision meets craftsmanship. We create spaces that tell stories, blending contemporary design with timeless elegance.</p>
+        <p class="mono" style="color:var(--brass);margin-top:16px">Architecture · Interior · Construction</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="projects.html">Our projects</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li>Architectural design</li>
+          <li>Interior design</li>
+          <li>Construction management</li>
+          <li>Project planning</li>
+          <li>Consultation</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li>804, Colonnade 2, Near One World Capital,<br/>B/h. Rajpath Club, Vikramnagar, Bodakdev,<br/>Ahmedabad 380054, Gujarat</li>
+          <li><a href="mailto:mannmishdesignstudio@gmail.com">mannmishdesignstudio@gmail.com</a></li>
+          <li><a href="tel:+919662002521">+91 96620 02521</a></li>
+          <li>Mon–Fri 9:00–18:00 · Sat 10:00–16:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bar mono">
+      <span>© 2026 Mannmish Design Studio</span>
+      <span><a href="https://instagram.com/mannmishdesignstudio" target="_blank" rel="noopener">@mannmishdesignstudio</a></span>
+      <span>Ahmedabad, India · 23.03°N 72.58°E</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+/* category filter */
+(() => {
+  const grid = document.getElementById('pgrid'), empty = document.getElementById('pempty');
+  document.querySelectorAll('#pfilter button').forEach(b => b.onclick = () => {
+    document.querySelectorAll('#pfilter button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    const cat = b.dataset.cat; let n = 0;
+    grid.querySelectorAll('.pj').forEach(p => {
+      const show = cat === 'all' || p.dataset.cat === cat;
+      p.classList.toggle('hide', !show); if (show) n++;
+    });
+    empty.style.display = n ? 'none' : 'block';
+  });
+})();
+
+/* lightbox — full photo only when it is asked for */
+(() => {
+  const lb = document.getElementById('lb'), img = document.getElementById('lbImg');
+  const cards = [...document.querySelectorAll('.pj')];
+  let cur = 0;
+
+  const show = i => {
+    const visible = cards.filter(c => !c.classList.contains('hide'));
+    if (!visible.length) return;
+    cur = (i + visible.length) % visible.length;
+    const c = visible[cur], im = c.querySelector('img');
+    img.src = im.src; img.alt = im.alt;
+    document.getElementById('lbKind').textContent = c.querySelector('.pj__kind').textContent;
+    document.getElementById('lbTitle').textContent = c.querySelector('h3').textContent;
+    lb.classList.add('on'); document.body.classList.add('is-locked');
+  };
+  const close = () => { lb.classList.remove('on'); document.body.classList.remove('is-locked'); };
+  const step = d => {
+    const visible = cards.filter(c => !c.classList.contains('hide'));
+    show((cur + d + visible.length) % visible.length);
+  };
+
+  document.querySelectorAll('.pj__media').forEach(btn => btn.onclick = () => {
+    const visible = cards.filter(c => !c.classList.contains('hide'));
+    show(visible.indexOf(btn.closest('.pj')));
+  });
+  document.getElementById('lbX').onclick = close;
+  document.getElementById('lbPrev').onclick = () => step(-1);
+  document.getElementById('lbNext').onclick = () => step(1);
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  addEventListener('keydown', e => {
+    if (!lb.classList.contains('on')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mannmish Design Studio — Architecture, Interiors &amp; Construction</title>
+<meta name="description" content="Mannmish Design Studio, Ahmedabad. Architecture, interior design and construction management. Where vision meets craftsmanship." />
+<link rel="icon" href="assets/logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<!-- ══ loader ══ -->
+<div id="loader">
+  <div class="loader__inner">
+    <div class="loader__name">Mannmish<span style="color:var(--brass)">.</span></div>
+    <div class="loader__bar"><i id="ldBar"></i></div>
+    <div class="loader__pct mono"><span>Building the model</span><span id="ldPct">0%</span></div>
+  </div>
+</div>
+
+<!-- ══ nav ══ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.jpg" alt="Mannmish Design Studio" />
+      <span><b>Mannmish</b><span>Design Studio</span></span>
+    </a>
+    <nav class="nav__links mono">
+      <a href="index.html" class="on">Home</a>
+      <a href="about.html">Studio</a>
+      <a href="projects.html">Work</a>
+      <a href="index.html#services">Expertise</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="btn mono" href="contact.html"><i></i>Start a project</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+  </div>
+</header>
+<div class="menu" id="menu"><a href="index.html">Home</a><a href="about.html">Studio</a><a href="projects.html">Work</a><a href="index.html#services">Expertise</a><a href="contact.html">Contact</a></div>
+
+<main>
+<!-- ══ hero ══ -->
+<section class="hero" id="home">
+  <canvas class="hero__canvas" id="cvHero"></canvas>
+  <div class="hero__veil"></div>
+
+  <div class="hero__in">
+    <div class="wrap">
+      <div class="hero__copy">
+        <p class="eyebrow mono hero__fade">Architecture · Interior · Construction</p>
+        <h1 class="display">
+          <span class="ln"><span>Spaces that</span></span>
+          <span class="ln"><span>hold a <em>story.</em></span></span>
+        </h1>
+        <p class="lede hero__fade">Where vision meets craftsmanship. We draw, detail and build — from the first massing sketch to the last skirting line.</p>
+        <div class="hero__cta hero__fade">
+          <a class="btn btn--solid mono" href="#work"><i></i>View our work</a>
+          <a class="btn mono" href="#plan">Explore a plan in 3D</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroller mono">Scroll to enter</div>
+
+  <div class="hud">
+    <div class="panel modes mono" id="modes">
+      <button class="on" data-mode="massing">Massing</button>
+      <button data-mode="xray">X-Ray</button>
+      <button data-mode="explode">Exploded</button>
+    </div>
+    <div class="panel sun mono">
+      <label for="sun">Daylight</label>
+      <input id="sun" type="range" min="0" max="100" value="46" aria-label="Time of day" />
+      <output id="sunOut">14:00</output>
+    </div>
+    <div class="hint mono"><em>↔</em>Drag to orbit the house</div>
+  </div>
+</section>
+
+<!-- ══ marquee ══ -->
+<div class="marquee">
+  <div class="marquee__row mono" id="mq"></div>
+</div>
+
+<!-- ══ studio ══ -->
+<section class="intro" id="studio">
+  <div class="wrap">
+    <div class="shead rv">
+      <div>
+        <p class="eyebrow mono"><span class="idx">01</span> &nbsp;The Studio</p>
+        <h2 class="display">A civil engineer and an architect, working off the same table.</h2>
+      </div>
+      <a class="btn mono" href="about.html">About us</a>
+    </div>
+
+    <div class="intro__grid">
+      <div class="rv">
+        <p class="big">We build spaces that <em>tell stories</em> — blending contemporary design with timeless elegance, and structural sense with the way a room actually feels at 7 in the evening.</p>
+        <p class="lede">Every project passes through three hands: planning, detailing and site. That is why our drawings survive construction — and why our sites finish close to the sketch that started them.</p>
+
+        <div class="founders">
+          <div class="founder"><b>Manank Patel</b><span class="mono">B.E. Civil Engineer</span></div>
+          <div class="founder"><b>Michelle Chokshi</b><span class="mono">B.Arch (COA) · M.Plan (ITPI)</span></div>
+        </div>
+      </div>
+
+      <div class="stats rv" data-d="1">
+        <div class="stat"><b data-count="2020">0</b><span class="mono">Founded</span></div>
+        <div class="stat"><b data-count="25" data-suffix="+">0</b><span class="mono">Projects completed</span></div>
+        <div class="stat"><b data-count="100" data-suffix="%">0</b><span class="mono">Client satisfaction</span></div>
+        <div class="stat"><b>Ahmedabad</b><span class="mono">Based in Gujarat</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ plan explorer ══ -->
+<section class="plan" id="plan">
+  <div class="wrap">
+    <div class="shead rv">
+      <div>
+        <p class="eyebrow mono"><span class="idx">02</span> &nbsp;Spatial Walkthrough</p>
+        <h2 class="display">Hover a room. See how we think about plan.</h2>
+      </div>
+      <p class="lede" style="max-width:38ch">A live 3&nbsp;BHK layout — built from the same logic we use on every residence: circulation first, light second, furniture last.</p>
+    </div>
+
+    <div class="plan__grid">
+      <div class="plan__stage rv">
+        <canvas id="cvPlan"></canvas>
+        <div class="plan__view mono" id="planView">
+          <button class="on" data-view="iso">3D</button>
+          <button data-view="top">Plan</button>
+        </div>
+        <div class="plan__tag mono">Typical 3 BHK · 1,505 sq.ft carpet</div>
+        <div class="plan__hint mono">Drag to rotate · Hover a room · Switch to true plan</div>
+      </div>
+
+      <div class="plan__side rv" data-d="1">
+        <div class="roomcard">
+          <p class="eyebrow mono"><span id="rmIdx">01</span>&nbsp;/&nbsp;09</p>
+          <h3 id="rmName">Living &amp; Dining</h3>
+          <p id="rmDesc">A single uninterrupted volume facing the deck, with the dining set on the quieter edge.</p>
+          <dl>
+            <div><dt>Carpet area</dt><dd id="rmArea">290 sq.ft</dd></div>
+            <div><dt>Light</dt><dd id="rmLight">South-west</dd></div>
+          </dl>
+        </div>
+        <div class="roomlist mono" id="roomList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ work ══ -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="shead rv">
+      <div>
+        <p class="eyebrow mono"><span class="idx">03</span> &nbsp;Selected Work</p>
+        <h2 class="display">Three recent rooms we are still proud of.</h2>
+      </div>
+      <a class="btn mono" href="projects.html"><i></i>All projects</a>
+    </div>
+
+    <div class="cards">
+      <a class="card rv" href="projects.html" data-tilt>
+        <div class="card__media">
+          <span class="card__no mono">01</span>
+          <img src="assets/project-1.jpg" alt="4BHK Residence at Shilp 14" loading="lazy" />
+          <div class="card__body">
+            <p class="mono" style="color:var(--brass)">Residence · Ahmedabad</p>
+            <h3>4BHK Residence, Shilp 14</h3>
+            <p>Sophisticated luxury meets modern elegance.</p>
+            <span class="card__go mono">View project →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card rv" data-d="1" href="projects.html" data-tilt>
+        <div class="card__media">
+          <span class="card__no mono">02</span>
+          <img src="assets/project-2.jpg" alt="3BHK Residence at Shivanta Rigel" loading="lazy" />
+          <div class="card__body">
+            <p class="mono" style="color:var(--brass)">Residence · Ahmedabad</p>
+            <h3>3BHK Residence, Shivanta Rigel</h3>
+            <p>Contemporary comfort with functional elegance.</p>
+            <span class="card__go mono">View project →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card rv" data-d="2" href="projects.html" data-tilt>
+        <div class="card__media">
+          <span class="card__no mono">03</span>
+          <img src="assets/project-3.jpg" alt="Theme based bedroom" loading="lazy" />
+          <div class="card__body">
+            <p class="mono" style="color:var(--brass)">Interior · Theme</p>
+            <h3>Hotwheels Themed Bedroom</h3>
+            <p>An immersive car-themed retreat for enthusiasts.</p>
+            <span class="card__go mono">View project →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ services ══ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="shead rv">
+      <div>
+        <p class="eyebrow mono"><span class="idx">04</span> &nbsp;Expertise</p>
+        <h2 class="display">Drawn, detailed and delivered under one roof.</h2>
+      </div>
+    </div>
+
+    <div id="srvList">
+      <div class="srv open">
+        <div class="srv__hd"><span class="srv__no mono">A / 01</span><h3>Architecture</h3><span class="srv__pm"></span></div>
+        <div class="srv__bd"><div><div class="srv__cols">
+          <span></span>
+          <p>Innovative architectural solutions that balance function with aesthetic clarity. Not just buildings — spaces that improve the everyday experience of the people inside them.</p>
+          <ul><li>Residential &amp; commercial design</li><li>Sustainable &amp; green building</li><li>Structural engineering integration</li><li>Project management &amp; supervision</li></ul>
+        </div></div></div>
+      </div>
+      <div class="srv">
+        <div class="srv__hd"><span class="srv__no mono">A / 02</span><h3>Interior Design</h3><span class="srv__pm"></span></div>
+        <div class="srv__bd"><div><div class="srv__cols">
+          <span></span>
+          <p>We turn interiors into beautiful, functional environments that reflect how you actually live. Every joint, reveal and material is considered and curated.</p>
+          <ul><li>Space planning &amp; layout design</li><li>Material selection &amp; sourcing</li><li>Custom furniture design</li><li>Lighting &amp; styling</li></ul>
+        </div></div></div>
+      </div>
+      <div class="srv">
+        <div class="srv__hd"><span class="srv__no mono">A / 03</span><h3>Construction</h3><span class="srv__pm"></span></div>
+        <div class="srv__bd"><div><div class="srv__cols">
+          <span></span>
+          <p>Construction management that delivers precisely from concept to completion — the highest quality standard, on time and inside the budget we agreed on.</p>
+          <ul><li>Project planning &amp; scheduling</li><li>Quality control &amp; supervision</li><li>Vendor management &amp; coordination</li><li>Cost management &amp; budget control</li></ul>
+        </div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ voices ══ -->
+<section class="voices">
+  <div class="wrap">
+    <div class="shead rv">
+      <div>
+        <p class="eyebrow mono"><span class="idx">05</span> &nbsp;Clients</p>
+        <h2 class="display">What it is like to build with us.</h2>
+      </div>
+    </div>
+    <div class="quotes rv">
+      <blockquote class="quote">
+        <p>“Mannmish transformed our home beyond our expectations. Their attention to detail and creative solutions made our dream home a reality.”</p>
+        <footer class="mono"><b>Hardik Patel</b>Residential Interior · Vaishnodevi, Ahmedabad</footer>
+      </blockquote>
+      <blockquote class="quote">
+        <p>“Professional, punctual, and incredibly talented. They delivered our office renovation on time and within budget.”</p>
+        <footer class="mono"><b>Chintan Chokshi</b>Commercial Office · Rajpath Road, Ahmedabad</footer>
+      </blockquote>
+      <blockquote class="quote">
+        <p>“From concept to completion the team was exceptional. Their design approach and quality of construction exceeded all our expectations.”</p>
+        <footer class="mono"><b>Hemita Mehta</b>Residential Interior · Nehrunagar, Ahmedabad</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ══ contact ══ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact__grid">
+      <div class="rv">
+        <p class="eyebrow mono"><span class="idx">06</span> &nbsp;Next</p>
+        <h2 class="display">Let's draw <em>your</em> plan.</h2>
+        <div class="hero__cta">
+          <a class="btn btn--solid mono" href="mailto:mannmishdesignstudio@gmail.com"><i></i>Write to the studio</a>
+          <a class="btn mono" href="tel:+919662002521">+91 96620 02521</a>
+        </div>
+      </div>
+      <dl class="info rv" data-d="1">
+        <div><dt>Studio</dt><dd>804, Colonnade 2, Near One World Capital,<br/>B/h. Rajpath Club, Bodakdev,<br/>Ahmedabad 380054, Gujarat</dd></div>
+        <div><dt>Mail</dt><dd><a href="mailto:mannmishdesignstudio@gmail.com">mannmishdesignstudio@gmail.com</a></dd></div>
+        <div><dt>Hours</dt><dd>Mon–Fri 9:00–18:00 · Sat 10:00–16:00</dd></div>
+        <div><dt>Social</dt><dd><a href="https://instagram.com/mannmishdesignstudio" target="_blank" rel="noopener">@mannmishdesignstudio</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <a class="brand" href="index.html">
+          <img src="assets/logo.jpg" alt="" />
+          <span><b>Mannmish</b><span>Design Studio</span></span>
+        </a>
+        <p>Where vision meets craftsmanship. We create spaces that tell stories, blending contemporary design with timeless elegance.</p>
+        <p class="mono" style="color:var(--brass);margin-top:16px">Architecture · Interior · Construction</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="projects.html">Our projects</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li>Architectural design</li>
+          <li>Interior design</li>
+          <li>Construction management</li>
+          <li>Project planning</li>
+          <li>Consultation</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li>804, Colonnade 2, Near One World Capital,<br/>B/h. Rajpath Club, Vikramnagar, Bodakdev,<br/>Ahmedabad 380054, Gujarat</li>
+          <li><a href="mailto:mannmishdesignstudio@gmail.com">mannmishdesignstudio@gmail.com</a></li>
+          <li><a href="tel:+919662002521">+91 96620 02521</a></li>
+          <li>Mon–Fri 9:00–18:00 · Sat 10:00–16:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bar mono">
+      <span>© 2026 Mannmish Design Studio</span>
+      <span><a href="https://instagram.com/mannmishdesignstudio" target="_blank" rel="noopener">@mannmishdesignstudio</a></span>
+      <span>Ahmedabad, India · 23.03°N 72.58°E</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============================================================
+   2. HERO  —  procedural 3D villa, daylight, three view modes
+   ============================================================ */
+const hero = (() => {
+  const canvas = document.getElementById('cvHero');
+  if (!window.THREE) { canvas.style.display = 'none'; return null; }
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: !MOB, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, MOB ? 1.5 : 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0x0a0a0b, 60, 220);
+
+  const camera = new THREE.PerspectiveCamera(36, 1, .1, 600);
+  camera.position.set(26, 13, 33);
+
+  /* ---- procedural surface textures (no image files needed) ---- */
+  function tex(w, h, draw, rx = 1, ry = 1) {
+    const c = Object.assign(document.createElement('canvas'), { width: w, height: h });
+    draw(c.getContext('2d'), w, h);
+    const t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rx, ry);
+    t.anisotropy = 4; t.encoding = THREE.sRGBEncoding;
+    return t;
+  }
+  const rnd = (a, b) => a + Math.random() * (b - a);
+
+  const texConcrete = tex(256, 256, (x, w, h) => {
+    x.fillStyle = '#b9b3a7'; x.fillRect(0, 0, w, h);
+    for (let i = 0; i < 5200; i++) {
+      const g = rnd(-16, 16) | 0;
+      x.fillStyle = `rgba(${170 + g},${165 + g},${155 + g},.5)`;
+      x.fillRect(rnd(0, w), rnd(0, h), rnd(.7, 2.4), rnd(.7, 2.4));
+    }
+    x.strokeStyle = 'rgba(120,116,108,.16)'; x.lineWidth = 1;           // shuttering lines
+    for (let y = 0; y < h; y += 64) { x.beginPath(); x.moveTo(0, y); x.lineTo(w, y); x.stroke(); }
+  }, 3, 3);
+
+  const texWood = tex(256, 256, (x, w, h) => {
+    x.fillStyle = '#8a5f38'; x.fillRect(0, 0, w, h);
+    for (let i = 0; i < 60; i++) {
+      x.fillStyle = `rgba(${90 + rnd(-26, 26) | 0},${62 + rnd(-18, 18) | 0},${34 + rnd(-12, 12) | 0},.6)`;
+      x.fillRect(i * 4.3, 0, rnd(1.4, 4), h);
+    }
+    x.strokeStyle = 'rgba(52,34,18,.5)';
+    for (let i = 0; i < 26; i++) {                                       // board joints
+      x.lineWidth = rnd(.6, 1.6); x.beginPath();
+      const px = rnd(0, w); x.moveTo(px, 0); x.lineTo(px + rnd(-4, 4), h); x.stroke();
+    }
+  }, 2, 2);
+
+  const texStone = tex(256, 256, (x, w, h) => {
+    x.fillStyle = '#8b867c'; x.fillRect(0, 0, w, h);
+    for (let i = 0; i < 4200; i++) {
+      const g = rnd(-20, 20) | 0;
+      x.fillStyle = `rgba(${139 + g},${134 + g},${124 + g},.55)`;
+      x.fillRect(rnd(0, w), rnd(0, h), rnd(1, 3), rnd(1, 3));
+    }
+    x.strokeStyle = 'rgba(60,58,54,.35)'; x.lineWidth = 1.4;             // paving joints
+    for (let i = 0; i <= 4; i++) {
+      x.beginPath(); x.moveTo(i * 64, 0); x.lineTo(i * 64, h); x.stroke();
+      x.beginPath(); x.moveTo(0, i * 64); x.lineTo(w, i * 64); x.stroke();
+    }
+  }, 6, 5);
+
+  const texGround = tex(256, 256, (x, w, h) => {
+    x.fillStyle = '#191a1d'; x.fillRect(0, 0, w, h);
+    for (let i = 0; i < 6000; i++) {
+      x.fillStyle = `rgba(${rnd(26, 54) | 0},${rnd(32, 62) | 0},${rnd(26, 48) | 0},.5)`;
+      x.fillRect(rnd(0, w), rnd(0, h), rnd(1, 3.2), rnd(1, 3.2));
+    }
+  }, 60, 60);
+
+  /* fake contact shadow under the building */
+  const texAO = tex(256, 256, (x, w, h) => {
+    const g = x.createRadialGradient(w / 2, h / 2, 10, w / 2, h / 2, w / 2);
+    g.addColorStop(0, 'rgba(0,0,0,.72)'); g.addColorStop(.55, 'rgba(0,0,0,.34)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    x.fillStyle = g; x.fillRect(0, 0, w, h);
+  });
+
+  /* ---- environment map: gives glass, brass and water something to reflect ---- */
+  const envScene = new THREE.Scene();
+  const envSky = tex(4, 128, (x, w, h) => {
+    const g = x.createLinearGradient(0, 0, 0, h);
+    g.addColorStop(0, '#20334b'); g.addColorStop(.48, '#8fa2b4');
+    g.addColorStop(.52, '#6d665c'); g.addColorStop(1, '#211f1d');
+    x.fillStyle = g; x.fillRect(0, 0, w, h);
+    x.fillStyle = '#fff3d6'; x.beginPath(); x.arc(w / 2, h * .3, 26, 0, 7); x.fill();  // sun blob
+  });
+  envScene.add(new THREE.Mesh(new THREE.SphereGeometry(60, 24, 16),
+    new THREE.MeshBasicMaterial({ map: envSky, side: THREE.BackSide })));
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  const envRT = pmrem.fromScene(envScene, .04);
+  scene.environment = envRT.texture;
+  pmrem.dispose();
+
+  /* ---- materials ---- */
+  const M = {
+    concrete: new THREE.MeshStandardMaterial({ map: texConcrete, bumpMap: texConcrete, bumpScale: .012, color: 0xffffff, roughness: .93, metalness: 0, envMapIntensity: .5 }),
+    plaster:  new THREE.MeshStandardMaterial({ map: texConcrete, color: 0xd8d2c6, roughness: .85, envMapIntensity: .45 }),
+    dark:     new THREE.MeshStandardMaterial({ color: 0x2e2b28, roughness: .55, metalness: .35, envMapIntensity: .8 }),
+    wood:     new THREE.MeshStandardMaterial({ map: texWood, bumpMap: texWood, bumpScale: .02, roughness: .62, metalness: .04, envMapIntensity: .5 }),
+    stone:    new THREE.MeshStandardMaterial({ map: texStone, bumpMap: texStone, bumpScale: .01, roughness: .9, envMapIntensity: .4 }),
+    metal:    new THREE.MeshStandardMaterial({ color: 0xc8a15a, roughness: .28, metalness: .95, envMapIntensity: 1.1 }),
+    steel:    new THREE.MeshStandardMaterial({ color: 0x8d9096, roughness: .3, metalness: .9, envMapIntensity: 1 }),
+    glass:    new THREE.MeshPhysicalMaterial({ color: 0xaecede, roughness: .03, metalness: 0, transparent: true, opacity: .24, envMapIntensity: 1.6, clearcoat: 1, clearcoatRoughness: .04 }),
+    water:    new THREE.MeshStandardMaterial({ color: 0x1f5566, roughness: .04, metalness: .55, envMapIntensity: 1.4 }),
+    green:    new THREE.MeshStandardMaterial({ color: 0x2f4a33, roughness: .95 }),
+    hedge:    new THREE.MeshStandardMaterial({ color: 0x27402c, roughness: 1 }),
+    ground:   new THREE.MeshStandardMaterial({ map: texGround, roughness: 1, metalness: 0 }),
+    glow:     new THREE.MeshStandardMaterial({ color: 0xffdcae, emissive: 0xffb45e, emissiveIntensity: 0, roughness: 1 })
+  };
+  const solids = [M.concrete, M.plaster, M.dark, M.wood, M.stone, M.metal, M.steel, M.water, M.green, M.hedge];
+  const edgeMat = new THREE.LineBasicMaterial({ color: 0xf4f1ea, transparent: true, opacity: 0 });
+
+  /* ---- helpers ---- */
+  const villa = new THREE.Group();
+  scene.add(villa);
+  const parts = {};
+  const addPart = (name, explodeY) => {
+    const g = new THREE.Group(); g.userData.ex = explodeY; villa.add(g); parts[name] = g; return g;
+  };
+  const gSite = addPart('site', 0), gGround = addPart('ground', 0),
+        gUpper = addPart('upper', 4.2), gRoof = addPart('roof', 8.4);
+
+  function box(parent, mat, w, h, d, x, y, z, edge = true) {
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+    m.position.set(x, y, z); m.castShadow = m.receiveShadow = true;
+    if (edge) m.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry), edgeMat));
+    parent.add(m); return m;
+  }
+  const cyl = (parent, mat, r, h, x, y, z, seg = 12) => {
+    const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, seg), mat);
+    m.position.set(x, y, z); m.castShadow = m.receiveShadow = true; parent.add(m); return m;
+  };
+
+  /* ---- site ---- */
+  const floorPlane = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), M.ground);
+  floorPlane.rotation.x = -Math.PI / 2; floorPlane.receiveShadow = true; gSite.add(floorPlane);
+
+  const ao = new THREE.Mesh(new THREE.PlaneGeometry(74, 60),
+    new THREE.MeshBasicMaterial({ map: texAO, transparent: true, depthWrite: false }));
+  ao.rotation.x = -Math.PI / 2; ao.position.y = .015; gSite.add(ao);
+
+  const grid = new THREE.GridHelper(220, 110, 0x3a3f47, 0x23262b);
+  grid.material.transparent = true; grid.material.opacity = .22; grid.position.y = .02; gSite.add(grid);
+
+  box(gSite, M.stone, 30, .6, 22, 0, .3, 0);                     // terrace deck
+  box(gSite, M.dark, 30.3, .06, 22.3, 0, .62, 0, false);         // shadow-gap trim
+  for (let i = 0; i < 4; i++) box(gSite, M.stone, 9, .17, .95, -3, .52 - i * .17, 11.4 + i * .95);
+  /* pool with coping and a submerged step */
+  box(gSite, M.stone, 10.6, .5, 5.4, -10, .35, 6, false);
+  box(gSite, M.water, 9.5, .42, 4.4, -10, .48, 6, false);
+  box(gSite, M.stone, 9.5, .12, .9, -10, .2, 7.7, false);
+  /* planting beds + gravel path */
+  box(gSite, M.hedge, 7, .95, 1.3, 9.5, .97, 8.6, false);
+  box(gSite, M.hedge, 1.3, .95, 7, 14.2, .97, 2, false);
+  box(gSite, M.stone, 2.4, .06, 9, 3.5, .63, 15.5, false);
+  [[-14,-6,1],[15,-4,.85],[-16,9,1.15],[13,11,.8],[-8,14,.95]].forEach(([x, z, s]) => {
+    cyl(gSite, M.dark, .17 * s, 3.6 * s, x, 1.8 * s, z, 7);
+    for (let k = 0; k < 3; k++) {
+      const f = new THREE.Mesh(new THREE.IcosahedronGeometry((1.9 - k * .42) * s, 0), M.green);
+      f.position.set(x + rnd(-.3, .3), (3.6 + k * 1.15) * s, z + rnd(-.3, .3));
+      f.rotation.set(rnd(0, 3), rnd(0, 3), rnd(0, 3)); f.castShadow = true; gSite.add(f);
+    }
+  });
+
+  /* ---- ground floor ---- */
+  box(gGround, M.concrete, 21, .4, 15, 0, .8, 0);                 // slab
+  box(gGround, M.plaster, 20, 3.6, .35, 0, 2.8, -7.1);            // back wall
+  box(gGround, M.plaster, .35, 3.6, 14.5, -9.9, 2.8, 0);          // side wall
+  box(gGround, M.plaster, .35, 3.6, 6, 9.9, 2.8, -4);
+  box(gGround, M.wood, .3, 3.6, 7.5, 2.4, 2.8, -3.2);             // timber core
+  box(gGround, M.stone, 3.2, 3.6, .34, -6.4, 2.8, -6.95, false);  // stone-clad panel
+
+  /* glazing set back behind the slab edge, so the reveal casts a real shadow line */
+  box(gGround, M.glass, 19.4, 3.3, .06, 0, 2.7, 6.72, false);
+  box(gGround, M.glass, .06, 3.3, 8.2, 9.72, 2.7, 3, false);
+  box(gGround, M.glow, 18.4, 2.3, .1, 0, 2.5, 6.4, false);        // interior light wash
+  for (let i = 0; i <= 8; i++) box(gGround, M.dark, .1, 3.4, .12, -9.7 + i * 2.42, 2.75, 6.74, false);
+  box(gGround, M.dark, 19.4, .12, .16, 0, 4.36, 6.74, false);     // head track
+  box(gGround, M.dark, 19.4, .1, .2, 0, 1.05, 6.76, false);       // sill
+
+  /* interior hints, visible through the glass */
+  box(gGround, M.dark, 3.4, .75, 1.5, -5.6, 1.38, 3.4, false);
+  box(gGround, M.dark, 1.6, .45, 1.6, -2.6, 1.22, 3.9, false);
+  box(gGround, M.wood, 2.6, 1.9, .5, 6.8, 1.95, -6.4, false);
+
+  /* stair: treads, risers, stringer and a glass balustrade */
+  for (let i = 0; i < 9; i++) {
+    box(gGround, M.stone, 2.6, .14, .52, 6.4, 1.25 + i * .38, 3.3 - i * .5, false);
+    box(gGround, M.plaster, 2.6, .26, .1, 6.4, 1.05 + i * .38, 3.05 - i * .5, false);
+  }
+  box(gGround, M.steel, .1, .3, 5.1, 5.15, 2.7, 1.3, false);
+  box(gGround, M.glass, .05, 1.0, 5.1, 7.65, 3.3, 1.3, false);
+  box(gGround, M.metal, .07, .07, 5.2, 7.65, 3.85, 1.3, false);
+
+  box(gGround, M.concrete, 22, .45, 15.5, 0, 4.9, 0);             // upper deck slab
+  box(gGround, M.dark, 22.2, .08, 15.7, 0, 5.16, 0, false);       // slab shadow gap
+
+  /* ---- upper floor ---- */
+  box(gUpper, M.plaster, 23, 3.5, 10, .5, 6.9, -1.8);             // main volume
+  box(gUpper, M.wood, 8, 3.3, .24, -6, 6.9, 3.36);                // timber cladding
+  box(gUpper, M.dark, 8.2, .1, .34, -6, 8.6, 3.36, false);
+  box(gUpper, M.glass, 13.6, 1.95, .06, 5, 7.1, 3.2, false);      // recessed glazing
+  box(gUpper, M.glow, 13.2, 1.6, .1, 5, 7.05, 3.05, false);
+  for (let i = 0; i <= 6; i++) box(gUpper, M.dark, .1, 2.05, .12, -1.6 + i * 2.2, 7.1, 3.22, false);
+  box(gUpper, M.dark, 13.6, .12, .2, 5, 8.1, 3.24, false);
+  box(gUpper, M.dark, 13.6, .1, .22, 5, 6.1, 3.26, false);
+  for (let i = 0; i < 6; i++) cyl(gUpper, M.glow, .1, .05, -1 + i * 2.3, 5.22, 4.6, 10);  // soffit downlights
+
+  /* glass balustrade to the terrace */
+  box(gUpper, M.glass, 12.6, 1.0, .04, 5, 5.68, 4.5, false);
+  box(gUpper, M.metal, 12.7, .07, .07, 5, 6.2, 4.5, false);
+  for (let i = 0; i <= 6; i++) box(gUpper, M.steel, .06, 1.05, .06, -1.3 + i * 2.1, 5.7, 4.5, false);
+
+  [-11.2, 11.2].forEach(x => cyl(gUpper, M.metal, .19, 8.4, x, 4.5, 4.2, 12));   // expressed columns
+
+  /* ---- roof ---- */
+  box(gRoof, M.concrete, 24.5, .42, 11.6, .5, 8.85, -1.8);
+  box(gRoof, M.plaster, 24.5, .5, .2, .5, 9.31, 3.9, false);      // parapet
+  box(gRoof, M.stone, 24.6, .08, .3, .5, 9.58, 3.9, false);       // coping
+  box(gRoof, M.plaster, .2, .5, 11.6, -11.65, 9.31, -1.8, false);
+  box(gRoof, M.stone, .3, .08, 11.6, -11.65, 9.58, -1.8, false);
+  for (let i = 0; i < 11; i++) box(gRoof, M.wood, .16, .18, 7, -4 + i * 1.3, 9.45, 6.4, false);
+  box(gRoof, M.steel, .14, .14, 7.2, -4.4, 9.45, 6.4, false);
+  box(gRoof, M.steel, .14, .14, 7.2, 9.2, 9.45, 6.4, false);
+  box(gRoof, M.stone, 2.2, 2.4, 2.2, -9, 10.2, -4);               // service block
+  cyl(gRoof, M.steel, .5, .45, 6.5, 9.3, -4.5, 14);               // plant / tank
+
+  /* ---- lights ---- */
+  const hemi = new THREE.HemisphereLight(0x9fb5c9, 0x191a1c, .5); scene.add(hemi);
+  const sun = new THREE.DirectionalLight(0xfff0d8, 1.8);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(MOB ? 1024 : 2048, MOB ? 1024 : 2048);
+  const sc = sun.shadow.camera;
+  sc.left = -38; sc.right = 38; sc.top = 38; sc.bottom = -38; sc.near = 1; sc.far = 170;
+  sun.shadow.bias = -0.0008; scene.add(sun); scene.add(sun.target);
+  const rim = new THREE.DirectionalLight(0x7fa6c8, .35); rim.position.set(-30, 14, -26); scene.add(rim);
+  const warm1 = new THREE.PointLight(0xffb066, 0, 26); warm1.position.set(0, 2.6, 3); villa.add(warm1);
+  const warm2 = new THREE.PointLight(0xffb066, 0, 26); warm2.position.set(4, 6.8, 1); villa.add(warm2);
+
+  const C = (h) => new THREE.Color(h);
+  const SKY_NIGHT = C(0x0a0d14), SKY_DUSK = C(0x30201c), SKY_DAY = C(0x6e7d8a);
+
+  const sunEl = document.getElementById('sun');
+
+  /* the slider spans 06:00 → 21:00; outside that it is night, so pin to the dark end
+     but keep showing the real wall-clock time */
+  function nowSun() {
+    const d = new Date(), h = d.getHours() + d.getMinutes() / 60;
+    const inRange = h >= 6 && h <= 21;
+    return {
+      t: inRange ? (h - 6) / 15 : 1,
+      label: inRange ? null : String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0')
+    };
+  }
+
+  let sunT = 0, sunTouched = false;
+  function applySun(t, label) {
+    const hrs = 6 + t * 15;                                   // 06:00 → 21:00
+    const day = clamp((hrs - 6) / 15, 0, 1);
+    const elev = Math.sin(day * Math.PI) * 1.28;               // radians, peak ~73°
+    const azi = -Math.PI * .15 + day * Math.PI * 1.15;
+    const R = 90, ce = Math.cos(elev);
+    sun.position.set(Math.cos(azi) * R * ce, Math.sin(elev) * R + 3, Math.sin(azi) * R * ce);
+    const elevDeg = elev * 180 / Math.PI;
+    const night = clamp(1 - elevDeg / 15, 0, 1);               // 1 = fully dark
+    const golden = clamp(1 - Math.abs(elevDeg - 12) / 16, 0, 1);
+
+    const sky = SKY_NIGHT.clone().lerp(SKY_DUSK, clamp(golden + (1 - night) * .2, 0, 1)).lerp(SKY_DAY, 1 - night);
+    scene.background = sky; scene.fog.color.copy(sky);
+    hemi.color.copy(sky); hemi.intensity = lerp(.5, .1, night);
+    sun.color.copy(C(0xfff2dd).lerp(C(0xff8a3d), golden * .95));
+    sun.intensity = lerp(2.1, .12, night * night);
+    rim.intensity = lerp(.32, .5, night);
+    M.glow.emissiveIntensity = night * 2.6;
+    const envI = lerp(1, .18, night);
+    [M.concrete, M.plaster, M.stone, M.wood].forEach(m => m.envMapIntensity = envI * .5);
+    M.metal.envMapIntensity = envI * 1.1; M.steel.envMapIntensity = envI;
+    M.glass.envMapIntensity = envI * 1.6; M.water.envMapIntensity = envI * 1.4;
+    warm1.intensity = warm2.intensity = night * 1.5;
+    M.water.color.copy(C(0x1f5566).lerp(C(0x0d2733), night));
+    renderer.toneMappingExposure = lerp(1.06, 1.3, night);
+
+    const h = Math.floor(hrs), m = Math.round((hrs - h) * 60 / 15) * 15;
+    document.getElementById('sunOut').textContent = label ||
+      String(m === 60 ? h + 1 : h).padStart(2, '0') + ':' + String(m === 60 ? 0 : m).padStart(2, '0');
+  }
+
+  /* open on the visitor's local time, and keep following the clock until they take over */
+  function syncToClock() {
+    const { t, label } = nowSun();
+    sunT = t; sunEl.value = Math.round(t * 100); applySun(t, label);
+  }
+  syncToClock();
+  setInterval(() => { if (!sunTouched) syncToClock(); }, 60000);
+
+  sunEl.addEventListener('input', e => { sunTouched = true; applySun(sunT = e.target.value / 100); });
+
+  /* ---- view modes ---- */
+  let mode = 'massing';
+  const tgt = { solid: 1, edge: 0 };
+  document.querySelectorAll('#modes button').forEach(b => b.onclick = () => {
+    document.querySelectorAll('#modes button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on'); mode = b.dataset.mode;
+    tgt.solid = mode === 'xray' ? .13 : 1;
+    tgt.edge  = mode === 'massing' ? 0 : mode === 'xray' ? .7 : .3;
+  });
+
+  /* ---- pointer orbit ---- */
+  let yaw = -0.5, yawV = 0, pitch = 0, drag = false, px = 0, py = 0, idle = 0;
+  const mouse = { x: 0, y: 0 };
+  canvas.addEventListener('pointerdown', e => { drag = true; px = e.clientX; py = e.clientY; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener('pointerup',   () => drag = false);
+  canvas.addEventListener('pointercancel', () => drag = false);
+  canvas.addEventListener('pointermove', e => {
+    mouse.x = (e.clientX / innerWidth - .5); mouse.y = (e.clientY / innerHeight - .5);
+    if (!drag) return;
+    yawV += (e.clientX - px) * .0022; pitch = clamp(pitch + (e.clientY - py) * .0016, -.12, .34);
+    px = e.clientX; py = e.clientY; idle = 0;
+  });
+
+  /* ---- resize ---- */
+  function resize() {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    if (canvas.width !== w * renderer.getPixelRatio() || canvas.height !== h * renderer.getPixelRatio()) {
+      renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+    }
+  }
+
+  /* ---- frame ---- */
+  let visible = true;
+  new IntersectionObserver(([e]) => visible = e.isIntersecting, { threshold: 0 })
+    .observe(document.getElementById('home'));
+
+  function frame() {
+    if (!visible) return;
+    resize();
+    idle++;
+    if (!drag && !RM && idle > 90) yawV += .0001;
+    yaw += yawV; yawV *= .93;
+    villa.rotation.y = yaw;
+
+    /* material fade for x-ray */
+    solids.forEach(m => {
+      m.opacity = lerp(m.opacity === undefined ? 1 : m.opacity, tgt.solid, .1);
+      m.transparent = m.opacity < .99;
+    });
+    edgeMat.opacity = lerp(edgeMat.opacity, tgt.edge, .1);
+
+    /* exploded axonometric */
+    for (const k in parts) {
+      const g = parts[k];
+      g.position.y = lerp(g.position.y, mode === 'explode' ? g.userData.ex : 0, .08);
+    }
+
+    /* scroll + parallax camera */
+    const p = clamp(scrollY / innerHeight, 0, 1);
+    const camX = lerp(26, 12, p) + (RM ? 0 : mouse.x * -4);
+    const camY = lerp(13, 24, p) + pitch * 22 + (RM ? 0 : mouse.y * -2.5);
+    camera.position.x = lerp(camera.position.x, camX, .06);
+    camera.position.y = lerp(camera.position.y, camY, .06);
+    camera.position.z = lerp(camera.position.z, lerp(33, 40, p), .06);
+    camera.lookAt(0, lerp(5.5, 3, p), 0);
+    sun.target.position.set(0, 3, 0);
+
+    renderer.render(scene, camera);
+  }
+  return { frame };
+})();
+
+/* ============================================================
+   3. PLAN EXPLORER — a sectioned 3D model of a 3 BHK
+   Walls are cut at 1.15m so the plan reads from above, the way
+   a physical presentation model is built.
+   ============================================================ */
+const ROOMS = [
+  { n:'Living & Dining', x0:-7,   x1:-1.2, z0:-5,   z1:-0.4, sqft:287, light:'West & north', fin:'wood',
+    desc:'One uninterrupted volume off the passage — seating to the window wall, dining held on the quieter kitchen edge.' },
+  { n:'Kitchen',         x0:-7,   x1:-1.2, z0:-0.4, z1: 2.4, sqft:175, light:'West', fin:'tile',
+    desc:'An L-shaped working triangle. Utility door beside the sink, so wet work never crosses the dining line.' },
+  { n:'Utility & Store', x0:-7,   x1:-1.2, z0: 2.4, z1: 5,   sqft:162, light:'South', fin:'tile',
+    desc:'Washing, drying and a full-height store — out of sight, two steps from the kitchen counter.' },
+  { n:'Foyer',           x0:-1.2, x1: 1.4, z0:-5,   z1:-2.2, sqft:78,  light:'Borrowed', fin:'stone',
+    desc:'The entry buffer. Shoe storage, a console, and a single framed view straight through to the balcony.' },
+  { n:'Passage',         x0:-1.2, x1: 1.4, z0:-2.2, z1: 1.6, sqft:106, light:'Borrowed', fin:'stone',
+    desc:'The spine. Every room opens off it, so no bedroom is ever entered through another.' },
+  { n:'Common Bath',     x0:-1.2, x1: 1.4, z0: 1.6, z1: 5,   sqft:95,  light:'South', fin:'tile',
+    desc:'Dry and wet split by a 10 mm glass screen; counter-top basin on a stone ledge.' },
+  { n:'Master Suite',    x0: 1.4, x1: 7,   z0:-5,   z1:-0.6, sqft:265, light:'East & north', fin:'wood',
+    desc:'Bed on the solid wall, full wardrobe run opposite, and a reading corner that catches the first light.' },
+  { n:'Bedroom 02',      x0: 1.4, x1: 7,   z0:-0.6, z1: 2.6, sqft:193, light:'East', fin:'wood',
+    desc:'Bed, study ledge and a wardrobe that doubles as the acoustic wall to the passage. Opens to the deck.' },
+  { n:'Balcony Deck',    x0: 1.4, x1: 7,   z0: 2.6, z1: 5,   sqft:145, light:'Open sky', fin:'deck',
+    desc:'Deck boards, a planter edge, and width enough for two chairs and a low table. Where the plan breathes.' }
+];
+
+const plan = (() => {
+  const canvas = document.getElementById('cvPlan');
+  if (!window.THREE) { canvas.style.display = 'none'; return null; }
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  if (!MOB) { renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap; }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.OrthographicCamera(-12, 12, 8, -8, .1, 200);
+  camera.position.set(15, 14, 17);
+
+  scene.add(new THREE.HemisphereLight(0xdce6f0, 0x1a1b20, .95));
+  const key = new THREE.DirectionalLight(0xfff4e6, 1.35);
+  key.position.set(11, 20, 8);
+  if (!MOB) {
+    key.castShadow = true; key.shadow.mapSize.set(1024, 1024);
+    const c = key.shadow.camera; c.left = -13; c.right = 13; c.top = 11; c.bottom = -11; c.far = 60;
+    key.shadow.bias = -0.0012; key.shadow.radius = 2;
+  }
+  scene.add(key);
+  const fill = new THREE.DirectionalLight(0xc8a15a, .38); fill.position.set(-14, 8, -11); scene.add(fill);
+
+  /* ---- materials: light model on a dark ground, like a museum maquette ---- */
+  const M = {
+    wallSide: new THREE.MeshStandardMaterial({ color: 0xcac4b8, roughness: .95 }),
+    wallCap:  new THREE.MeshStandardMaterial({ color: 0xf1ece2, roughness: .8 }),
+    parapet:  new THREE.MeshStandardMaterial({ color: 0xb6b0a4, roughness: .95 }),
+    glass:    new THREE.MeshStandardMaterial({ color: 0x9cc3d6, roughness: .05, metalness: .3, transparent: true, opacity: .3 }),
+    wood:     new THREE.MeshStandardMaterial({ color: 0x9b7247, roughness: .75 }),
+    darkwood: new THREE.MeshStandardMaterial({ color: 0x6d4a2c, roughness: .7 }),
+    tile:     new THREE.MeshStandardMaterial({ color: 0xa9a69e, roughness: .55 }),
+    stone:    new THREE.MeshStandardMaterial({ color: 0x8d8a83, roughness: .8 }),
+    deck:     new THREE.MeshStandardMaterial({ color: 0x7d5c3c, roughness: .9 }),
+    fabric:   new THREE.MeshStandardMaterial({ color: 0x6e7683, roughness: 1 }),
+    white:    new THREE.MeshStandardMaterial({ color: 0xe4e0d8, roughness: .6 }),
+    metal:    new THREE.MeshStandardMaterial({ color: 0xb0aaa0, roughness: .35, metalness: .7 }),
+    plant:    new THREE.MeshStandardMaterial({ color: 0x4e6d46, roughness: .95 }),
+    plinth:   new THREE.MeshStandardMaterial({ color: 0x191a1e, roughness: 1 })
+  };
+  const FIN = { wood: M.wood, tile: M.tile, stone: M.stone, deck: M.deck };
+  const WALLMATS = [M.wallSide, M.wallSide, M.wallCap, M.wallSide, M.wallSide, M.wallSide];
+
+  const root = new THREE.Group(); scene.add(root);
+  const shell = new THREE.Group(); root.add(shell);
+
+  const bx = (g, mat, w, h, d, x, y, z, ry) => {
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+    m.position.set(x, y, z); if (ry) m.rotation.y = ry;
+    m.castShadow = true; m.receiveShadow = true; g.add(m); return m;
+  };
+
+  /* ---- plinth ---- */
+  bx(shell, M.plinth, 15.6, .5, 11.6, 0, -.26, 0);
+  const plinthEdge = new THREE.LineSegments(
+    new THREE.EdgesGeometry(new THREE.BoxGeometry(15.6, .5, 11.6)),
+    new THREE.LineBasicMaterial({ color: 0x3d3f46 }));
+  plinthEdge.position.y = -.26; shell.add(plinthEdge);
+
+  /* ---- wall system with real openings ----------------------------------
+     op = { at, w, sill = 0, head = WH }   at = coordinate along the wall axis
+     a door is a full-height gap, a window leaves a sill below it        */
+  const WH = 1.15;
+  function wall(x0, z0, x1, z1, o = {}) {
+    const t = o.t || .12, h = o.h || WH, mats = o.mat || WALLMATS;
+    const horiz = Math.abs(x1 - x0) > Math.abs(z1 - z0);
+    const a = horiz ? Math.min(x0, x1) : Math.min(z0, z1);
+    const b = horiz ? Math.max(x0, x1) : Math.max(z0, z1);
+    const segs = []; let cur = a;
+    [...(o.open || [])].sort((p, q) => p.at - q.at).forEach(op => {
+      const s = op.at - op.w / 2, e = op.at + op.w / 2;
+      const sill = op.sill || 0, head = op.head === undefined ? h : op.head;
+      if (s > cur) segs.push([cur, s, 0, h]);
+      if (sill > 0) segs.push([s, e, 0, sill]);
+      if (head < h) segs.push([s, e, head, h]);
+      cur = Math.max(cur, e);
+    });
+    if (cur < b) segs.push([cur, b, 0, h]);
+    segs.forEach(([s, e, y0, y1]) => {
+      const L = e - s, H = y1 - y0;
+      if (L < .004 || H < .004) return;
+      if (horiz) bx(shell, mats, L, H, t, (s + e) / 2, y0 + H / 2, z0);
+      else       bx(shell, mats, t, H, L, x0, y0 + H / 2, (s + e) / 2);
+    });
+  }
+
+  const EXT = { t: .25 };
+  /* exterior envelope */
+  wall(-7, -5, 7, -5, { ...EXT, open: [                       // north — entrance + windows
+    { at: 0.1,  w: 1.0 },                                     // main door
+    { at: -4.2, w: 2.0, sill: .5 },                           // living
+    { at: 4.4,  w: 1.6, sill: .5 } ] });                      // master
+  wall(-7, -5, -7, 5, { ...EXT, open: [                       // west
+    { at: -2.7, w: 2.4, sill: .5 },                           // living
+    { at: 1.0,  w: 1.6, sill: .6 },                           // kitchen
+    { at: 3.6,  w: 1.2, sill: .7 } ] });                      // utility
+  wall(-7, 5, 1.4, 5, { ...EXT, open: [                       // south (to the bath end)
+    { at: -4.1, w: 1.2, sill: .7 },                           // utility
+    { at: 0.1,  w: .8,  sill: .8 } ] });                      // bath
+  wall(7, -5, 7, 2.6, { ...EXT, open: [                       // east
+    { at: -2.8, w: 2.2, sill: .5 },                           // master
+    { at: 1.0,  w: 1.8, sill: .5 } ] });                      // bedroom 02
+  /* balcony is open — parapet instead of wall */
+  wall(7, 2.6, 7, 5,   { t: .25, h: .5, mat: [M.parapet,M.parapet,M.wallCap,M.parapet,M.parapet,M.parapet] });
+  wall(1.4, 5, 7, 5,   { t: .25, h: .5, mat: [M.parapet,M.parapet,M.wallCap,M.parapet,M.parapet,M.parapet] });
+
+  /* interior partitions */
+  wall(-1.2, -5, -1.2, 5, { open: [{ at: -1.4, w: 1.4 }, { at: 3.3, w: .9 }] });  // spine / west block
+  wall(1.4, -5, 1.4, 5,   { open: [{ at: -3.2, w: .9 }, { at: 0.6, w: .9 }] });   // spine / east block
+  wall(-7, -0.4, -1.2, -0.4, { open: [{ at: -4.5, w: 1.1 }] });                   // living / kitchen
+  wall(-7, 2.4, -1.2, 2.4,   { open: [{ at: -6.0, w: .9 }] });                    // kitchen / utility
+  wall(-1.2, -2.2, 1.4, -2.2,{ open: [{ at: 0.1, w: 1.6 }] });                    // foyer / passage
+  wall(-1.2, 1.6, 1.4, 1.6,  { open: [{ at: 0.1, w: .8 }] });                     // passage / bath
+  wall(1.4, -0.6, 7, -0.6,   { open: [{ at: 4.6, w: .9 }] });                      // master / bedroom 02
+  wall(1.4, 2.6, 7, 2.6,     { open: [{ at: 4.4, w: 2.6 }] });                     // bedroom 02 / deck
+  bx(shell, M.glass, 2.6, 1.05, .05, 4.4, .55, 2.6);                               // sliding glass to the deck
+
+  /* door leaves + swing arcs, the detail that makes it read as a plan */
+  function door(x, z, ry, w = .9) {
+    const g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = ry; root.add(g);
+    bx(g, M.darkwood, w, 1.02, .045, w / 2, .51, 0);
+    const arc = new THREE.Mesh(
+      new THREE.RingGeometry(w - .03, w, 28, 1, 0, Math.PI / 2),
+      new THREE.MeshBasicMaterial({ color: 0x8d8a83, transparent: true, opacity: .5, side: THREE.DoubleSide }));
+    arc.rotation.x = -Math.PI / 2; arc.position.y = .035; g.add(arc);
+  }
+  door(-0.4, -5, 0);              // entrance
+  door(1.4, -3.65, -Math.PI / 2); // master
+  door(1.4, 0.15, -Math.PI / 2);  // bedroom 02
+  door(-0.3, 1.6, 0, .8);             // bath
+  door(-6.45, 2.4, 0);            // utility
+
+  /* ---- furniture ------------------------------------------------------- */
+  const F = {
+    sofa(g, x, z, ry, len = 2.6) {
+      const s = new THREE.Group(); s.position.set(x, 0, z); s.rotation.y = ry; g.add(s);
+      bx(s, M.fabric, len, .32, .9, 0, .16, 0);
+      bx(s, M.fabric, len, .38, .22, 0, .43, -.34);
+      bx(s, M.fabric, .22, .3, .9, -len / 2 + .11, .4, 0);
+      bx(s, M.fabric, .22, .3, .9, len / 2 - .11, .4, 0);
+    },
+    table(g, x, z, ry, w, d, mat = M.darkwood) {
+      const s = new THREE.Group(); s.position.set(x, 0, z); s.rotation.y = ry; g.add(s);
+      bx(s, mat, w, .07, d, 0, .4, 0);
+      [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([sx, sz]) =>
+        bx(s, mat, .07, .38, .07, sx * (w / 2 - .1), .19, sz * (d / 2 - .1)));
+    },
+    chair(g, x, z, ry) {
+      const s = new THREE.Group(); s.position.set(x, 0, z); s.rotation.y = ry; g.add(s);
+      bx(s, M.fabric, .44, .05, .44, 0, .42, 0);
+      bx(s, M.fabric, .44, .45, .06, 0, .64, -.19);
+      [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([sx, sz]) =>
+        bx(s, M.metal, .04, .4, .04, sx * .18, .2, sz * .18));
+    },
+    bed(g, x, z, ry, w = 1.8) {
+      const s = new THREE.Group(); s.position.set(x, 0, z); s.rotation.y = ry; g.add(s);
+      bx(s, M.darkwood, w, .28, 2.05, 0, .14, 0);
+      bx(s, M.white, w - .08, .17, 1.9, 0, .36, .06);
+      bx(s, M.white, w * .42, .12, .42, -w * .23, .48, -.72);
+      bx(s, M.white, w * .42, .12, .42,  w * .23, .48, -.72);
+      bx(s, M.fabric, w - .08, .06, .9, 0, .46, .55);
+      bx(s, M.darkwood, w + .2, .75, .08, 0, .37, -1.06);
+      bx(s, M.darkwood, .42, .4, .42, -w / 2 - .3, .2, -.85);
+      bx(s, M.darkwood, .42, .4, .42,  w / 2 + .3, .2, -.85);
+    },
+    run(g, x, z, ry, len, d = .6, h = .9, mat = M.white) {   // counter / wardrobe run
+      const s = new THREE.Group(); s.position.set(x, 0, z); s.rotation.y = ry; g.add(s);
+      bx(s, mat, len, h, d, 0, h / 2, 0);
+      bx(s, M.metal, len, .035, d + .04, 0, h + .02, 0);
+      for (let i = 1; i * .6 < len; i++) bx(s, M.metal, .012, h * .75, .012, -len / 2 + i * .6, h / 2, d / 2 + .02);
+    },
+    tall(g, x, z, ry, len, h = 1.05) { F.run(g, x, z, ry, len, .55, h, M.white); },
+    wc(g, x, z, ry) {
+      const s = new THREE.Group(); s.position.set(x, 0, z); s.rotation.y = ry; g.add(s);
+      bx(s, M.white, .38, .38, .6, 0, .19, 0);
+      bx(s, M.white, .38, .55, .18, 0, .28, -.34);
+    },
+    shower(g, x, z, w, d) {
+      bx(root, M.tile, w, .04, d, x, .04, z);
+      bx(root, M.glass, .04, 1.05, d, x - w / 2, .55, z);
+      bx(root, M.metal, .06, .06, .06, x + w / 2 - .1, 1.0, z);
+    },
+    planter(g, x, z, w = .5) {
+      bx(g, M.stone, w, .32, w, x, .16, z);
+      bx(g, M.plant, w - .12, .34, w - .12, x, .48, z);
+    },
+    rug(g, x, z, w, d) { bx(g, M.fabric, w, .02, d, x, .015, z); },
+    tv(g, x, z, ry) {
+      const s = new THREE.Group(); s.position.set(x, 0, z); s.rotation.y = ry; g.add(s);
+      bx(s, M.darkwood, 1.8, .4, .42, 0, .2, 0);
+      bx(s, M.plinth, 1.5, .55, .05, 0, .78, -.1);
+    },
+    appliance(g, x, z, ry) {
+      const s = new THREE.Group(); s.position.set(x, 0, z); s.rotation.y = ry; g.add(s);
+      bx(s, M.metal, .62, .85, .62, 0, .43, 0);
+      bx(s, M.plinth, .42, .42, .03, 0, .5, .31);
+    }
+  };
+
+  /* ---- rooms: floor finish, furniture, label, pick volume ---- */
+  const HALF = Math.PI / 2;
+  const rooms = ROOMS.map((r, i) => {
+    const cx = (r.x0 + r.x1) / 2, cz = (r.z0 + r.z1) / 2;
+    const w = r.x1 - r.x0, d = r.z1 - r.z0;
+    const g = new THREE.Group(); root.add(g);
+
+    const floor = new THREE.Mesh(new THREE.BoxGeometry(w - .02, .1, d - .02), FIN[r.fin].clone());
+    floor.position.set(cx, -.05, cz); floor.receiveShadow = true; g.add(floor);
+
+    /* pick volume — invisible but ray-tested */
+    const pick = new THREE.Mesh(new THREE.BoxGeometry(w - .1, 1.3, d - .1),
+      new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
+    pick.position.set(cx, .65, cz); pick.userData.i = i; g.add(pick);
+
+    switch (r.n) {
+      case 'Living & Dining':
+        F.sofa(g, -5.4, -2.6, HALF, 2.8); F.rug(g, -4.3, -2.6, 2.6, 2.2);
+        F.table(g, -4.3, -2.6, 0, 1.1, .6); F.tv(g, -2.2, -2.6, -HALF);
+        F.table(g, -4.3, -1.35, 0, 1.5, .9);
+        F.chair(g, -5.3, -1.35, -HALF); F.chair(g, -3.3, -1.35, HALF);
+        F.chair(g, -4.3, -2.15, 0);
+        F.planter(g, -1.9, -4.4, .45);
+        break;
+      case 'Kitchen':
+        F.run(g, -4.1, 0.0, 0, 5.2); F.run(g, -6.6, 1.2, HALF, 2.2);
+        F.appliance(g, -2.1, 1.6, Math.PI); F.table(g, -3.6, 1.5, 0, 1.6, .7, M.white);
+        break;
+      case 'Utility & Store':
+        F.appliance(g, -6.4, 4.4, Math.PI); F.tall(g, -4.9, 4.6, Math.PI, 1.8);
+        F.run(g, -2.2, 3.6, -HALF, 1.6, .5, .85, M.white);
+        break;
+      case 'Foyer':
+        F.run(g, -0.9, -3.6, HALF, 1.6, .4, .8, M.darkwood); F.planter(g, 1.0, -4.5, .4);
+        break;
+      case 'Passage':
+        F.rug(g, 0.1, -0.6, 1.1, 2.4); F.run(g, 1.1, 1.1, -HALF, .9, .35, .75, M.darkwood);
+        break;
+      case 'Common Bath':
+        F.wc(g, -0.8, 2.4, HALF); F.run(g, 0.3, 4.6, Math.PI, 1.5, .55, .82, M.white);
+        F.shower(g, 0.75, 2.6, 1.1, 1.4);
+        break;
+      case 'Master Suite':
+        F.bed(g, 4.3, -2.6, 0, 1.9); F.tall(g, 4.4, -0.95, Math.PI, 3.4);
+        F.chair(g, 6.2, -4.0, -2.3); F.planter(g, 2.2, -4.4, .4); F.rug(g, 4.3, -1.9, 3.2, 2.2);
+        break;
+      case 'Bedroom 02':
+        F.bed(g, 5.85, 0.9, -HALF, 1.5); F.tall(g, 2.0, 1.2, HALF, 2.2);
+        F.run(g, 4.6, 2.2, Math.PI, 1.4, .45, .75, M.darkwood); F.chair(g, 4.6, 1.7, 0);
+        break;
+      case 'Balcony Deck':
+        F.chair(g, 2.6, 3.9, 1.2); F.chair(g, 3.9, 3.9, 2.0);
+        F.table(g, 3.25, 4.5, 0, .7, .7, M.metal);
+        [5.0, 5.7, 6.4].forEach(x => F.planter(g, x, 4.3, .45));
+        break;
+    }
+
+    /* floating label — dark plate, sized to its own text */
+    const NAME = '500 40px Inter, Helvetica, sans-serif', AREA = '500 23px "JetBrains Mono", monospace';
+    const c = document.createElement('canvas');
+    let ctx = c.getContext('2d');
+    ctx.font = NAME; const w1 = ctx.measureText(r.n).width;
+    ctx.font = AREA; const w2 = ctx.measureText(r.sqft + ' SQ.FT').width;
+    const PW = Math.ceil(Math.max(w1, w2)) + 60, PH = 124;
+    c.width = PW; c.height = PH; ctx = c.getContext('2d');
+    const rr = (x, y, w2_, h2_, rad) => {
+      if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(x, y, w2_, h2_, rad); return; }
+      ctx.beginPath(); ctx.moveTo(x + rad, y);
+      ctx.arcTo(x + w2_, y, x + w2_, y + h2_, rad); ctx.arcTo(x + w2_, y + h2_, x, y + h2_, rad);
+      ctx.arcTo(x, y + h2_, x, y, rad); ctx.arcTo(x, y, x + w2_, y, rad); ctx.closePath();
+    };
+    rr(2, 2, PW - 4, PH - 4, 26);
+    ctx.fillStyle = 'rgba(11,11,13,.76)'; ctx.fill();
+    ctx.strokeStyle = 'rgba(244,241,234,.16)'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.font = NAME; ctx.fillStyle = '#f2efe9'; ctx.fillText(r.n, PW / 2, 48);
+    ctx.font = AREA; ctx.fillStyle = '#bb9757'; ctx.fillText(r.sqft + ' SQ.FT', PW / 2, 88);
+    const tex = new THREE.CanvasTexture(c); tex.encoding = THREE.sRGBEncoding;
+    tex.minFilter = THREE.LinearFilter; tex.generateMipmaps = false;
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0, depthTest: false }));
+    const SH = .62, SW = SH * PW / PH;
+    sp.position.set(cx, 1.72, cz); sp.scale.set(SW, SH, 1); sp.renderOrder = 10; root.add(sp);
+
+    /* brass outline that appears on the focused room */
+    const ol = new THREE.LineSegments(
+      new THREE.EdgesGeometry(new THREE.BoxGeometry(w - .06, 1.16, d - .06)),
+      new THREE.LineBasicMaterial({ color: 0xc8a15a, transparent: true, opacity: 0, depthTest: false }));
+    ol.position.set(cx, .58, cz); ol.renderOrder = 9; root.add(ol);
+
+    return { g, floor, sp, ol, i, sw: SW, sh: SH, base: FIN[r.fin].color.clone() };
+  });
+
+  /* ---- side UI ---- */
+  const listEl = document.getElementById('roomList');
+  listEl.innerHTML = ROOMS.map((r, i) =>
+    `<button data-i="${i}"><span>${String(i + 1).padStart(2, '0')} &nbsp; ${r.n}</span><span>${r.sqft} ft²</span></button>`).join('');
+
+  let focus = 0, auto = true;
+  function select(i) {
+    focus = i; const r = ROOMS[i];
+    document.getElementById('rmIdx').textContent = String(i + 1).padStart(2, '0');
+    document.getElementById('rmName').textContent = r.n;
+    document.getElementById('rmDesc').textContent = r.desc;
+    document.getElementById('rmArea').textContent = r.sqft + ' sq.ft';
+    document.getElementById('rmLight').textContent = r.light;
+    listEl.querySelectorAll('button').forEach(b => b.classList.toggle('on', +b.dataset.i === i));
+  }
+  listEl.querySelectorAll('button').forEach(b => {
+    b.onmouseenter = () => { auto = false; select(+b.dataset.i); };
+    b.onclick = () => { auto = false; select(+b.dataset.i); };
+  });
+  select(0);
+
+  /* ---- view toggle: 3D model ⇄ true plan ---- */
+  let view = 'iso';
+  document.querySelectorAll('#planView button').forEach(b => b.onclick = () => {
+    document.querySelectorAll('#planView button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on'); view = b.dataset.view; auto = false;
+  });
+  const ISO = new THREE.Vector3(15, 14, 17), TOP = new THREE.Vector3(0, 30, .02);
+
+  /* ---- input ---- */
+  const ray = new THREE.Raycaster(), pt = new THREE.Vector2();
+  let over = false, dragP = false, lx = 0, spin = 0;
+  canvas.addEventListener('pointermove', e => {
+    const r = canvas.getBoundingClientRect();
+    pt.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+    over = true;
+    if (dragP) { spin += (e.clientX - lx) * .006; lx = e.clientX; auto = false; }
+  });
+  canvas.addEventListener('pointerleave', () => over = false);
+  canvas.addEventListener('pointerdown', e => { dragP = true; lx = e.clientX; auto = false; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener('pointerup', () => dragP = false);
+  canvas.addEventListener('pointercancel', () => dragP = false);
+
+  let t = 0, visible = false;
+  new IntersectionObserver(([e]) => visible = e.isIntersecting, { threshold: .05 })
+    .observe(document.getElementById('plan'));
+
+  const DIM = new THREE.Color(0x2f3138);
+  function frame() {
+    if (!visible) return;
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    if (!w || !h) return;
+    const pr = renderer.getPixelRatio();
+    if (canvas.width !== Math.round(w * pr) || canvas.height !== Math.round(h * pr)) {
+      renderer.setSize(w, h, false);
+      const a = w / h, f = Math.max(8.6, 9.6 / a);
+      camera.left = -f * a; camera.right = f * a; camera.top = f; camera.bottom = -f;
+      camera.updateProjectionMatrix();
+    }
+
+    if (over && !dragP) {
+      ray.setFromCamera(pt, camera);
+      const hit = ray.intersectObjects(root.children, true).find(o => o.object.userData.i !== undefined);
+      if (hit && hit.object.userData.i !== focus) { auto = false; select(hit.object.userData.i); }
+    }
+
+    t++;
+    if (auto && !RM && t % 190 === 0) select((focus + 1) % ROOMS.length);
+
+    /* camera + orientation */
+    const goal = view === 'top' ? TOP : ISO;
+    camera.position.lerp(goal, .07);
+    camera.zoom = lerp(camera.zoom, view === 'top' ? 1.24 : 1, .07);
+    camera.updateProjectionMatrix();
+    camera.lookAt(0, 0, 0);
+    if (view === 'top') spin = lerp(spin, 0, .07);
+    else if (!dragP && !RM) spin += .0007;
+    root.rotation.y = spin;
+
+    rooms.forEach(o => {
+      const on = o.i === focus;
+      o.floor.material.color.lerp(on ? o.base : DIM.clone().lerp(o.base, .45), .1);
+      o.floor.material.emissive.lerp(on ? new THREE.Color(0x3a2c12) : new THREE.Color(0x000000), .1);
+      o.sp.material.opacity = lerp(o.sp.material.opacity, on ? 1 : 0, .14);
+      o.sp.visible = o.sp.material.opacity > .02;
+      o.ol.material.opacity = lerp(o.ol.material.opacity, on ? .5 : 0, .1);
+    });
+
+    renderer.render(scene, camera);
+  }
+  return { frame };
+})();
+
+/* ============================================================
+   4. single render loop
+   ============================================================ */
+(function loop() {
+  requestAnimationFrame(loop);
+  hero && hero.frame();
+  plan && plan.frame();
+})();
+</script>
+</body>
+</html>

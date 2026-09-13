@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Studio — Mannmish Design Studio</title>
+<meta name="description" content="Manank Patel and Michelle Chokshi — civil engineering precision and architectural vision, working from one table in Ahmedabad." />
+<link rel="icon" href="assets/logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div id="loader">
+  <div class="loader__inner">
+    <div class="loader__name">Mannmish<span style="color:var(--brass)">.</span></div>
+    <div class="loader__bar"><i id="ldBar"></i></div>
+    <div class="loader__pct mono"><span>Loading</span><span id="ldPct">0%</span></div>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.jpg" alt="Mannmish Design Studio" />
+      <span><b>Mannmish</b><span>Design Studio</span></span>
+    </a>
+    <nav class="nav__links mono">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="on">Studio</a>
+      <a href="projects.html">Work</a>
+      <a href="index.html#services">Expertise</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="btn mono" href="contact.html"><i></i>Start a project</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+  </div>
+</header>
+<div class="menu" id="menu"><a href="index.html">Home</a><a href="about.html">Studio</a><a href="projects.html">Work</a><a href="index.html#services">Expertise</a><a href="contact.html">Contact</a></div>
+
+<main>
+<section class="phero">
+  <div class="wrap phero__grid">
+    <div>
+      <p class="eyebrow mono rv">The Studio</p>
+      <h1 class="display rv" data-d="1">Two disciplines,<br/>one table.</h1>
+      <p class="lede rv" data-d="2">Mannmish Design Studio was born from a shared vision: spaces that serve their purpose and still lift the people inside them. Our journey began with the union of two complementary skill sets — civil engineering precision and architectural creativity.</p>
+    </div>
+    <div class="phero__art rv" data-d="2">
+      <canvas id="cvAbout"></canvas>
+      <span class="mono">Slab · structure · envelope</span>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="shead rv">
+      <div>
+        <p class="eyebrow mono"><span class="idx">01</span> &nbsp;Our Story</p>
+        <h2 class="display">Great design sits where technical excellence meets artistic vision.</h2>
+      </div>
+    </div>
+    <div class="two">
+      <div class="prose rv">
+        <p class="big">Every project we take on is approached with meticulous attention to detail, inventive problem-solving and a deep understanding of what our clients actually need — not just what they first ask for.</p>
+        <p>From residential homes to commercial spaces, we bring the same level of dedication to every project, so that each space we build tells a story of its own.</p>
+        <p>Because the drawings and the site sit under the same roof, decisions get made once. A detail that cannot be built never leaves the studio, and a change on site never quietly breaks the design.</p>
+      </div>
+      <div class="stats rv" data-d="1">
+        <div class="stat"><b data-count="2020">0</b><span class="mono">Founded</span></div>
+        <div class="stat"><b data-count="25" data-suffix="+">0</b><span class="mono">Projects completed</span></div>
+        <div class="stat"><b data-count="100" data-suffix="%">0</b><span class="mono">Client satisfaction</span></div>
+        <div class="stat"><b>Ahmedabad</b><span class="mono">Based in Gujarat</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt">
+  <div class="wrap">
+    <div class="shead rv">
+      <div>
+        <p class="eyebrow mono"><span class="idx">02</span> &nbsp;Founders</p>
+        <h2 class="display">The two people you will actually be working with.</h2>
+      </div>
+    </div>
+    <div class="profiles">
+      <article class="profile rv">
+        <span class="ini">MP</span>
+        <div>
+          <h3>Manank Patel</h3>
+          <p class="role mono">B.E. Civil Engineer</p>
+        </div>
+        <p>With a strong foundation in civil engineering, Manank brings technical precision and structural expertise to every project. His background ensures designs are not only good-looking but structurally sound and compliant with safety standards.</p>
+      </article>
+      <article class="profile rv" data-d="1">
+        <span class="ini">MC</span>
+        <div>
+          <h3>Michelle Chokshi</h3>
+          <p class="role mono">B.Arch (COA) · M.Plan (ITPI)</p>
+        </div>
+        <p>Michelle combines architectural and design expertise with master planning knowledge to create holistic solutions that are innovative, functional and timeless. Each project reflects her belief that architecture should serve both people and place.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="shead rv">
+      <div>
+        <p class="eyebrow mono"><span class="idx">03</span> &nbsp;Design Philosophy</p>
+        <h2 class="display">Functional and beautiful. Sustainable and inventive. Timeless, yet of now.</h2>
+      </div>
+    </div>
+    <div class="vals rv">
+      <div class="val"><span class="mono" style="color:var(--brass)">01</span><b>Client-Centric</b><p>Every project begins with understanding your needs, your lifestyle and your vision. We collaborate closely the whole way through the design process.</p></div>
+      <div class="val"><span class="mono" style="color:var(--brass)">02</span><b>Quality Excellence</b><p>We hold the highest standards in design execution, material selection and construction supervision, so the quality outlasts the handover.</p></div>
+      <div class="val"><span class="mono" style="color:var(--brass)">03</span><b>Sustainable Design</b><p>Environmental responsibility is part of the process, not an add-on. We build spaces that are energy-efficient and environmentally conscious.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt">
+  <div class="wrap">
+    <div class="shead rv">
+      <div>
+        <p class="eyebrow mono"><span class="idx">04</span> &nbsp;How We Work</p>
+        <h2 class="display">Five stages, from first conversation to keys.</h2>
+      </div>
+    </div>
+    <div class="steps rv">
+      <div class="step"><span class="no mono">Stage 01</span><b>Brief &amp; site study</b><p>We listen, measure and study the site — light, access, services and the rules that govern the plot — before a single line is drawn.</p></div>
+      <div class="step"><span class="no mono">Stage 02</span><b>Concept &amp; planning</b><p>Massing, circulation and layout options, presented as drawings and 3D views you can actually read and react to.</p></div>
+      <div class="step"><span class="no mono">Stage 03</span><b>Design development</b><p>Materials, joinery, lighting and services are resolved together, so the detail you approve is the detail that gets built.</p></div>
+      <div class="step"><span class="no mono">Stage 04</span><b>Working drawings</b><p>Dimensioned drawings, schedules and BOQs for every trade — the set that keeps the site honest and the budget intact.</p></div>
+      <div class="step"><span class="no mono">Stage 05</span><b>Execution &amp; handover</b><p>Vendor coordination, quality checks and site supervision through to snagging, cleaning and the day you move in.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <div class="contact__grid">
+      <div class="rv">
+        <p class="eyebrow mono">Visit the studio</p>
+        <h2 class="display">Come and see <em>the drawings.</em></h2>
+        <div class="hero__cta">
+          <a class="btn btn--solid mono" href="contact.html"><i></i>Get in touch</a>
+          <a class="btn mono" href="tel:+919662002521">+91 96620 02521</a>
+        </div>
+      </div>
+      <dl class="info rv" data-d="1">
+        <div><dt>Studio address</dt><dd>804, Colonnade 2, Near One World Capital,<br/>B/h. Rajpath Club, Vikramnagar, Bodakdev,<br/>Ahmedabad 380054, Gujarat</dd></div>
+        <div><dt>Hours</dt><dd>Mon–Fri 9:00–18:00 · Sat 10:00–16:00<br/>Sunday by appointment</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <a class="brand" href="index.html">
+          <img src="assets/logo.jpg" alt="" />
+          <span><b>Mannmish</b><span>Design Studio</span></span>
+        </a>
+        <p>Where vision meets craftsmanship. We create spaces that tell stories, blending contemporary design with timeless elegance.</p>
+        <p class="mono" style="color:var(--brass);margin-top:16px">Architecture · Interior · Construction</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="projects.html">Our projects</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li>Architectural design</li>
+          <li>Interior design</li>
+          <li>Construction management</li>
+          <li>Project planning</li>
+          <li>Consultation</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li>804, Colonnade 2, Near One World Capital,<br/>B/h. Rajpath Club, Vikramnagar, Bodakdev,<br/>Ahmedabad 380054, Gujarat</li>
+          <li><a href="mailto:mannmishdesignstudio@gmail.com">mannmishdesignstudio@gmail.com</a></li>
+          <li><a href="tel:+919662002521">+91 96620 02521</a></li>
+          <li>Mon–Fri 9:00–18:00 · Sat 10:00–16:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bar mono">
+      <span>© 2026 Mannmish Design Studio</span>
+      <span><a href="https://instagram.com/mannmishdesignstudio" target="_blank" rel="noopener">@mannmishdesignstudio</a></span>
+      <span>Ahmedabad, India · 23.03°N 72.58°E</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* about hero — a slowly turning exploded slab stack */
+(() => {
+  const canvas = document.getElementById('cvAbout');
+  if (!window.THREE || !canvas) return;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.OrthographicCamera(-7, 7, 7, -7, .1, 120);
+  camera.position.set(12, 10, 13); camera.lookAt(0, .6, 0);
+  scene.add(new THREE.HemisphereLight(0xd7e2ee, 0x16171b, 1));
+  const key = new THREE.DirectionalLight(0xfff3e2, 1.25); key.position.set(9, 16, 7); scene.add(key);
+  const fill = new THREE.DirectionalLight(0xc8a15a, .45); fill.position.set(-11, 5, -9); scene.add(fill);
+
+  const root = new THREE.Group(); scene.add(root);
+  const slab = new THREE.MeshStandardMaterial({ color: 0xcac4b8, roughness: .9 });
+  const glass = new THREE.MeshStandardMaterial({ color: 0x9cc3d6, roughness: .08, metalness: .3, transparent: true, opacity: .3 });
+  const brass = new THREE.MeshStandardMaterial({ color: 0xc8a15a, roughness: .35, metalness: .85 });
+  const edge = new THREE.LineBasicMaterial({ color: 0xf4f1ea, transparent: true, opacity: .28 });
+
+  const box = (mat, w, h, d, x, y, z, wire) => {
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+    m.position.set(x, y, z);
+    if (wire !== false) m.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry), edge));
+    root.add(m); return m;
+  };
+
+  const LV = [-2.2, .6, 3.4];                 // three floor plates, exploded apart
+  LV.forEach((y, i) => {
+    box(slab, 7.4 - i * .5, .22, 5.4 - i * .4, 0, y, 0);
+    for (let c = 0; c < 4; c++) {
+      const sx = c < 2 ? -1 : 1, sz = c % 2 ? -1 : 1;
+      box(brass, .16, 1.5, .16, sx * (2.9 - i * .25), y + .86, sz * (1.9 - i * .2), false);
+    }
+    if (i < 2) box(glass, 6.3 - i * .5, 1.4, 4.4 - i * .4, 0, y + .82, 0, false);
+  });
+  box(slab, 6.4, .18, 4.6, 0, 5.1, 0);        // roof
+
+  let visible = true, spin = .5;
+  new IntersectionObserver(([e]) => visible = e.isIntersecting, { threshold: 0 }).observe(canvas);
+  const RM2 = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  (function loop() {
+    requestAnimationFrame(loop);
+    if (!visible) return;
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    if (!w || !h) return;
+    const pr = renderer.getPixelRatio();
+    if (canvas.width !== Math.round(w * pr) || canvas.height !== Math.round(h * pr)) {
+      renderer.setSize(w, h, false);
+      const f = 6.6, a = w / h;
+      camera.left = -f * a; camera.right = f * a; camera.top = f; camera.bottom = -f;
+      camera.updateProjectionMatrix();
+    }
+    if (!RM2) spin += .0022;
+    root.rotation.y = spin;
+    renderer.render(scene, camera);
+  })();
+})();
+</script>
+</body>
+</html>
