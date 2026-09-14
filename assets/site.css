@@ -69,6 +69,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .display em{font-style:italic;color:var(--acc-2)}
 .mono{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.17em;text-transform:uppercase}
 .acc{color:var(--acc)}
+.only-mob{display:none}
 .eyebrow{color:var(--muted);display:flex;align-items:center;gap:12px;margin:0}
 .eyebrow::before{content:"";width:26px;height:1px;background:var(--acc);flex:none}
 .lede{color:var(--muted);font-size:clamp(15px,1.2vw,18px);max-width:48ch}
@@ -422,6 +423,14 @@ section{position:relative}
   .sun{min-width:0;width:100%}
 }
 @media(max-width:760px){
+  .only-desk{display:none}
+  .only-mob{display:inline}
+  /* the caption and the view toggle were colliding on a narrow stage:
+     the toggle keeps the top-right, the captions stack at the foot */
+  .plan__tag{top:auto;bottom:38px;left:14px;right:70px;font-size:9.5px;letter-spacing:.11em;line-height:1.4}
+  .plan__hint{bottom:16px;left:14px;right:14px;font-size:9.5px;letter-spacing:.11em}
+  .plan__view{top:10px;right:10px}
+  .plan__view button{padding:7px 12px;font-size:10px}
   .nav__links,.nav .btn{display:none}
   .burger{display:grid}
   .menu{display:flex}
