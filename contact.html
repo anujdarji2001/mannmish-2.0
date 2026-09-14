@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Contact — Mannmish Design Studio</title>
 <meta name="description" content="Talk to Mannmish Design Studio, Bodakdev, Ahmedabad. +91 96620 02521 · mannmishdesignstudio@gmail.com" />
+<meta name="theme-color" content="#f4f1e9" />
 <link rel="icon" href="assets/logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
@@ -16,11 +17,28 @@
 <div class="grain"></div>
 
 <div id="loader">
-  <div class="loader__inner">
-    <div class="loader__name">Mannmish<span style="color:var(--brass)">.</span></div>
-    <div class="loader__bar"><i id="ldBar"></i></div>
-    <div class="loader__pct mono"><span>Loading</span><span id="ldPct">0%</span></div>
+  <div class="ld__in">
+    <svg class="ld__house" viewBox="0 0 220 156" aria-hidden="true">
+      <path class="fillw" d="M98 134 V102 H118 V134 Z"/>
+      <path class="acc" data-draw d="M8 134 H212"/>
+      <path data-draw d="M46 134 V74 H174 V134"/>
+      <path data-draw d="M34 74 H186 V40 H34 Z"/>
+      <path class="acc" data-draw d="M28 40 H192 M28 34 H192"/>
+      <path data-draw d="M56 122 V96 H88 V122 Z M72 96 V122"/>
+      <path data-draw d="M128 122 V96 H164 V122 Z M146 96 V122"/>
+      <path data-draw d="M98 134 V102 H118 V134"/>
+      <path data-draw d="M46 66 V46 H94 V66 Z M70 46 V66"/>
+      <path data-draw d="M118 66 V46 H170 V66 Z M144 46 V66"/>
+      <path data-draw d="M40 134 H180"/>
+      <path class="dim" d="M8 148 H212 M8 143 V153 M212 143 V153 M110 143 V153"/>
+    </svg>
+    <div class="ld__word">Mannmish<i>.</i></div>
+    <div class="ld__sub mono">Design Studio · Ahmedabad</div>
+    <div class="ld__bar"><i id="ldBar"></i></div>
+    <div class="ld__pct mono"><span id="ldMsg">Setting out the grid</span><span id="ldPct">0%</span></div>
   </div>
+  <div class="ld__shutter ld__shutter--t"></div>
+  <div class="ld__shutter ld__shutter--b"></div>
 </div>
 
 <header class="nav" id="nav">
@@ -33,25 +51,64 @@
       <a href="index.html">Home</a>
       <a href="about.html">Studio</a>
       <a href="projects.html">Work</a>
-      <a href="index.html#services">Expertise</a>
       <a href="contact.html" class="on">Contact</a>
     </nav>
     <a class="btn mono" href="contact.html"><i></i>Start a project</a>
-    <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
   </div>
 </header>
-<div class="menu" id="menu"><a href="index.html">Home</a><a href="about.html">Studio</a><a href="projects.html">Work</a><a href="index.html#services">Expertise</a><a href="contact.html">Contact</a></div>
+<div class="menu" id="menu">
+  <div>
+    <a href="index.html">Home</a><a href="about.html">Studio</a><a href="projects.html">Work</a><a href="contact.html">Contact</a>
+  </div>
+  <div class="menu__foot mono">
+    <a href="mailto:mannmishdesignstudio@gmail.com">mannmishdesignstudio@gmail.com</a>
+    <a href="tel:+919662002521">+91 96620 02521</a>
+    <span>Bodakdev · Ahmedabad</span>
+  </div>
+</div>
 
 <main>
 <section class="phero">
-  <div class="wrap">
-    <p class="eyebrow mono rv">Contact</p>
-    <h1 class="display rv" data-d="1">Tell us about<br/>the space.</h1>
-    <p class="lede rv" data-d="2" style="margin-top:26px">Ready to bring your vision to life? We would love to hear about the project and talk through how we can build something worth living in.</p>
+  <div class="wrap phero__grid">
+    <div>
+      <p class="eyebrow mono rv">Contact</p>
+      <h1 class="display rv" data-d="1">Tell us about<br/>the space.</h1>
+      <p class="lede rv" data-d="2" style="margin-top:26px">Ready to bring your vision to life? We would love to hear about the project and talk through how we can build something worth living in.</p>
+    </div>
+    <div class="sheet rv" data-d="2">
+      <svg class="dwg" viewBox="0 0 400 360" aria-label="Key plan of the studio location" role="img">
+        <path class="fillw" d="M176 150 H272 V226 H176 Z"/>
+        <path class="fine" data-draw d="M0 96 H400 M0 130 H400"/>
+        <path class="fine" data-draw d="M104 0 V360 M138 0 V360"/>
+        <path class="dim" d="M0 113 H400 M121 0 V360"/>
+        <path data-draw d="M176 150 H272 V226 H176 Z"/>
+        <path class="fine" data-draw d="M186 160 H262 M186 176 H262 M186 192 H262 M186 208 H262"/>
+        <path data-draw d="M176 150 V138 H272 V150"/>
+        <path class="fine" data-draw d="M296 150 H372 V212 H296 Z"/>
+        <path class="fine" data-draw d="M22 150 H86 V212 H22 Z"/>
+        <path class="fine" data-draw d="M22 254 H140 V318 H22 Z"/>
+        <path class="fine" data-draw d="M176 254 H300 V318 H176 Z"/>
+        <path class="fine" data-draw d="M22 22 H86 V72 H22 Z"/>
+        <path class="fine" data-draw d="M176 22 H300 V72 H176 Z"/>
+        <path class="dim" d="M224 188 m-92 0 a92 92 0 1 0 184 0 a92 92 0 1 0 -184 0"/>
+        <path class="acc" data-draw d="M224 132 c-13 0 -23 10 -23 23 c0 17 23 39 23 39 c0 0 23 -22 23 -39 c0 -13 -10 -23 -23 -23 Z"/>
+        <path class="acc" data-draw d="M224 148 m-6 0 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0"/>
+        <path class="acc" data-draw d="M356 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M356 68 V36 M356 36 l-5 8 M356 36 l5 8"/>
+        <text class="hot" x="356" y="86" text-anchor="middle">N</text>
+        <text x="224" y="240" text-anchor="middle">COLONNADE 2 · UNIT 804</text>
+        <text x="334" y="230" text-anchor="middle">RAJPATH CLUB</text>
+        <text x="8" y="90">RAJPATH ROAD</text>
+        <text x="146" y="352">BODAKDEV</text>
+        <text x="392" y="352" text-anchor="end">NOT TO SCALE</text>
+      </svg>
+      <span class="sheet__tag mono">Key plan · Bodakdev</span>
+      <span class="sheet__stamp mono">DWG 03</span>
+    </div>
   </div>
 </section>
 
-<section class="band">
+<section class="band on-light">
   <div class="wrap two">
     <div class="rv">
       <p class="eyebrow mono"><span class="idx">01</span> &nbsp;Send a message</p>
@@ -117,7 +174,7 @@
   </div>
 </section>
 
-<section class="band">
+<section class="band on-light tint">
   <div class="wrap">
     <div class="shead rv">
       <div>
@@ -125,10 +182,25 @@
         <h2 class="display">Three steps before anything is drawn.</h2>
       </div>
     </div>
-    <div class="vals rv">
-      <div class="val"><span class="mono" style="color:var(--brass)">01</span><b>We call you back</b><p>Usually within a working day. We ask about the site, the scope and roughly what you want to spend — so nobody wastes a meeting.</p></div>
-      <div class="val"><span class="mono" style="color:var(--brass)">02</span><b>We visit the site</b><p>Measurements, light, access and services. For interiors we photograph everything; for new builds we check the plot and its rules.</p></div>
-      <div class="val"><span class="mono" style="color:var(--brass)">03</span><b>You get a proposal</b><p>Scope, stages, timeline and fee in writing. Once it is signed, Stage 01 starts and you meet the people doing the work.</p></div>
+    <div class="flow rv">
+      <article class="flow__i"><span class="flow__ghost">01</span>
+        <span class="flow__no mono">Step 01</span>
+        <h3>We call you back</h3>
+        <p>Usually within a working day. We ask about the site, the scope and roughly what you want to spend — so nobody wastes a meeting.</p>
+        <div class="flow__foot mono"><span>Takes</span><b>15 minutes</b></div>
+      </article>
+      <article class="flow__i"><span class="flow__ghost">02</span>
+        <span class="flow__no mono">Step 02</span>
+        <h3>We visit the site</h3>
+        <p>Measurements, light, access and services. For interiors we photograph everything; for new builds we check the plot and its rules.</p>
+        <div class="flow__foot mono"><span>Takes</span><b>One visit</b></div>
+      </article>
+      <article class="flow__i"><span class="flow__ghost">03</span>
+        <span class="flow__no mono">Step 03</span>
+        <h3>You get a proposal</h3>
+        <p>Scope, stages, timeline and fee in writing. Once it is signed, Stage 01 starts and you meet the people doing the work.</p>
+        <div class="flow__foot mono"><span>Takes</span><b>A few days</b></div>
+      </article>
     </div>
   </div>
 </section>
@@ -143,7 +215,7 @@
           <span><b>Mannmish</b><span>Design Studio</span></span>
         </a>
         <p>Where vision meets craftsmanship. We create spaces that tell stories, blending contemporary design with timeless elegance.</p>
-        <p class="mono" style="color:var(--brass);margin-top:16px">Architecture · Interior · Construction</p>
+        <p class="mono" class="acc" style="margin-top:16px">Architecture · Interior · Construction</p>
       </div>
       <div>
         <h4>Studio</h4>
