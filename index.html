@@ -73,43 +73,37 @@
 <main>
 <!-- ══ hero ══ -->
 <section class="hero" id="home">
+
   <div class="hero__stage">
     <canvas class="hero__canvas" id="cvHero"></canvas>
     <div class="hero__veil"></div>
-
-    <div class="hud">
-      <div class="panel modes mono" id="modes">
-        <button class="on" data-mode="massing">Exterior</button>
-        <button data-mode="xray">X-Ray</button>
-        <button data-mode="explode">Exploded</button>
-      </div>
-      <div class="panel sun mono">
-        <label for="sun">Daylight</label>
-        <input id="sun" type="range" min="0" max="100" value="46" aria-label="Time of day" />
-        <output id="sunOut">14:00</output>
-      </div>
-      <div class="hint mono"><em>↔</em>Drag to walk around the house</div>
-    </div>
   </div>
 
-  <div class="hero__in">
-    <div class="wrap">
-      <div class="hero__copy">
-        <p class="eyebrow mono hero__fade">Architecture · Interior · Construction</p>
-        <h1>
-          <span class="ln"><span>Spaces that</span></span>
-          <span class="ln"><span>hold a <em>story.</em></span></span>
-        </h1>
-        <p class="lede hero__fade">Where vision meets craftsmanship. We draw, detail and build — from the first massing sketch to the last skirting line.</p>
-        <div class="hero__cta hero__fade">
-          <a class="btn btn--solid mono" href="#work"><i></i>View our work</a>
-          <a class="btn mono" href="#plan">Explore a plan in 3D</a>
-        </div>
+  <p class="hero__cap mono">
+    <span class="hero__live"><i></i>Live model</span>
+    <span><em>↔</em>Drag to orbit</span>
+    <span class="sun">
+      <label for="sun">Daylight</label>
+      <input id="sun" type="range" min="0" max="100" value="96" aria-label="Time of day" />
+      <output id="sunOut">18:55</output>
+    </span>
+  </p>
+
+  <div class="hero__body">
+    <div class="hero__copy">
+      <p class="eyebrow mono hero__fade">Architecture · Interior · Construction</p>
+      <h1>
+        <span class="ln"><span>Spaces that</span></span>
+        <span class="ln"><span>hold a <em>story.</em></span></span>
+      </h1>
+      <p class="lede hero__fade">Where vision meets craftsmanship. We draw, detail and build — from the first massing sketch to the last skirting line.</p>
+      <div class="hero__cta hero__fade">
+        <a class="btn btn--solid mono" href="#work"><i></i>View our work</a>
+        <a class="btn mono" href="#plan">Explore a plan in 3D</a>
       </div>
     </div>
   </div>
 
-  <div class="scroller mono">Scroll to enter</div>
 </section>
 
 <!-- ══ marquee ══ -->
@@ -438,7 +432,7 @@ const hero = (() => {
     draw(c.getContext('2d'), w, h);
     const t = new THREE.CanvasTexture(c);
     t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rx, ry);
-    t.anisotropy = 4; t.encoding = THREE.sRGBEncoding;
+    t.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); t.encoding = THREE.sRGBEncoding;
     return t;
   }
   const speck = (x, w, h, n, f) => { for (let i = 0; i < n; i++) { x.fillStyle = f(); x.fillRect(rnd(0, w), rnd(0, h), rnd(.8, 2.6), rnd(.8, 2.6)); } };
@@ -545,21 +539,14 @@ const hero = (() => {
     solar:    new THREE.MeshStandardMaterial({ color: 0x1c2a44, roughness: .2, metalness: .6, envMapIntensity: 1.2 }),
     tank:     new THREE.MeshStandardMaterial({ color: 0x2b2f33, roughness: .7 })
   };
-  const FADE = ['plaster','plaster2','stone','wood','woodDark','frame','trim','brass','steel','curtain',
-                'pave','kerb','leafA','leafB','leafC','bark','pot','car','carGlass','tyre','solar','tank'].map(k => M[k]);
-  const edgeMat = new THREE.LineBasicMaterial({ color: 0x17160f, transparent: true, opacity: 0 });
-
   /* ---------- helpers ---------- */
   const villa = new THREE.Group(); scene.add(villa);
-  const parts = {};
-  const addPart = (n, ex) => { const g = new THREE.Group(); g.userData.ex = ex; villa.add(g); parts[n] = g; return g; };
-  const gSite = addPart('site', 0), gGround = addPart('ground', 0),
-        gUpper = addPart('upper', 3.8), gRoof = addPart('roof', 7.4);
+  const addPart = () => { const g = new THREE.Group(); villa.add(g); return g; };
+  const gSite = addPart(), gGround = addPart(), gUpper = addPart(), gRoof = addPart();
 
-  function box(p, mat, w, h, d, x, y, z, edge) {
+  function box(p, mat, w, h, d, x, y, z) {
     const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
     m.position.set(x, y, z); m.castShadow = m.receiveShadow = true;
-    if (edge) m.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry), edgeMat));
     p.add(m); return m;
   }
   function cyl(p, mat, rt, rb, h, x, y, z, seg = 12) {
@@ -597,9 +584,6 @@ const hero = (() => {
   /* ======================= SITE ======================= */
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(600, 600), M.ground);
   ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
-
-  const grid = new THREE.GridHelper(240, 120, 0x3a3f47, 0x23262b);      // setting-out grid, outside the plot
-  grid.material.transparent = true; grid.material.opacity = .22; grid.position.y = .02; gSite.add(grid);
 
   /* lawn — stops at the compound wall */
   const lawn = new THREE.Mesh(new THREE.PlaneGeometry(34.4, 28.8), M.lawn);
@@ -800,29 +784,40 @@ const hero = (() => {
   sun.shadow.mapSize.set(MOB ? 1024 : 2048, MOB ? 1024 : 2048);
   const sc = sun.shadow.camera;
   sc.left = -34; sc.right = 34; sc.top = 34; sc.bottom = -34; sc.near = 1; sc.far = 200;
-  sun.shadow.bias = -0.0009; sun.shadow.normalBias = .02;
+  sun.shadow.bias = -0.0004; sun.shadow.normalBias = .06;
   scene.add(sun); scene.add(sun.target);
   const bounce = new THREE.DirectionalLight(0xcbb99a, .28); bounce.position.set(-26, 6, -22); scene.add(bounce);
   const warm1 = new THREE.PointLight(0xffb066, 0, 22); warm1.position.set(-4, Y0 + 2.2, 2.4); villa.add(warm1);
   const warm2 = new THREE.PointLight(0xffb066, 0, 22); warm2.position.set(-3, F1 + 2, 2); villa.add(warm2);
   const warm3 = new THREE.PointLight(0xffc488, 0, 16); warm3.position.set(4.6, S1 - .6, HZ + 2.8); villa.add(warm3);
 
-  const SKY_NIGHT = C(0x0a0d14), SKY_DUSK = C(0x30201c), SKY_DAY = C(0x6e7d8a);
+  /* A flat background colour is what made the render read dull — a real sky
+     is graded, deep overhead and warm at the horizon. This is a 2×256 canvas
+     stretched over a dome, repainted whenever the daylight changes. */
+  const SKY = { zenN: C(0x05070f), zenD: C(0x3d6d9e), zenG: C(0x2b3c62),
+                horN: C(0x0b1018), horD: C(0xaec0cb), horG: C(0xff9d52) };
+  const skyCan = Object.assign(document.createElement('canvas'), { width: 2, height: 256 });
+  const skyCtx = skyCan.getContext('2d');
+  const skyTex = new THREE.CanvasTexture(skyCan); skyTex.encoding = THREE.sRGBEncoding;
+  scene.add(new THREE.Mesh(new THREE.SphereGeometry(300, 24, 16),
+    new THREE.MeshBasicMaterial({ map: skyTex, side: THREE.BackSide, fog: false,
+                                  depthWrite: false, toneMapped: false })));
+  const hex = c => '#' + c.getHexString();
 
   const sunEl = document.getElementById('sun'), sunOut = document.getElementById('sunOut');
 
-  function nowSun() {
-    const d = new Date(), h = d.getHours() + d.getMinutes() / 60;
-    const inRange = h >= 6 && h <= 21;
-    return { t: inRange ? (h - 6) / 15 : 1,
-             label: inRange ? null : String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0') };
-  }
+  /* The hero opens at golden hour — the one condition every building is
+     actually photographed in. It is also the condition that makes a white
+     plaster house read dark with lit windows, so the headline sits over it
+     without a scrim. The slider still runs the whole day. */
+  const DUSK = .966;             /* ~19:03 — the sun about seven degrees up */
 
-  let sunT = 0, sunTouched = false;
+  let sunT = DUSK, sunTouched = false;
+  const DAY_H = 13.5;                  /* 06:00 to 19:30 — an Ahmedabad day, near enough */
   function applySun(t, label) {
-    const hrs = 6 + t * 15, day = clamp((hrs - 6) / 15, 0, 1);
+    const hrs = 6 + t * DAY_H, day = clamp(t, 0, 1);
     const elev = Math.sin(day * Math.PI) * 1.24;
-    const azi = -Math.PI * .05 + day * Math.PI * 1.05;
+    const azi = Math.PI * (1.05 - day * 1.05) + Math.PI * .05;
     const R = 120, ce = Math.cos(elev);
     sun.position.set(Math.cos(azi) * R * ce, Math.sin(elev) * R + 4, Math.sin(azi) * R * ce);
 
@@ -830,15 +825,25 @@ const hero = (() => {
     const night = clamp(1 - deg / 14, 0, 1);
     const golden = clamp(1 - Math.abs(deg - 11) / 15, 0, 1);
 
-    const sky = SKY_NIGHT.clone().lerp(SKY_DUSK, clamp(golden + (1 - night) * .2, 0, 1)).lerp(SKY_DAY, 1 - night);
-    scene.background = sky; scene.fog.color.copy(sky);
-    hemi.color.copy(sky); hemi.intensity = lerp(.5, .12, night);
+    const zen = SKY.zenN.clone().lerp(SKY.zenD, 1 - night).lerp(SKY.zenG, golden * .55);
+    const hor = SKY.horN.clone().lerp(SKY.horD, 1 - night).lerp(SKY.horG, golden * .9);
+    const mid = zen.clone().lerp(hor, .5);
+    const g = skyCtx.createLinearGradient(0, 0, 0, 256);
+    g.addColorStop(0, hex(zen)); g.addColorStop(.40, hex(zen));
+    g.addColorStop(.472, hex(mid));
+    g.addColorStop(.5, hex(hor)); g.addColorStop(.52, hex(hor.clone().multiplyScalar(.5)));
+    g.addColorStop(1, hex(hor.clone().multiplyScalar(.22)));
+    skyCtx.fillStyle = g; skyCtx.fillRect(0, 0, 2, 256); skyTex.needsUpdate = true;
+
+    scene.background = zen; scene.fog.color.copy(hor);
+    hemi.color.copy(mid); hemi.intensity = lerp(.5, .12, night);
     sun.color.copy(C(0xfff4e2).lerp(C(0xff8f42), golden * .9));
     sun.intensity = lerp(2.2, .06, night * night);
     bounce.intensity = lerp(.3, .12, night);
-    M.glow.emissiveIntensity = night * 2.4;
-    warm1.intensity = warm2.intensity = night * 1.4;
-    warm3.intensity = night * 1.1;
+    const lamp = clamp(night * 1.5, 0, 1);
+    M.glow.emissiveIntensity = lamp * 2.6;
+    warm1.intensity = warm2.intensity = lamp * 1.6;
+    warm3.intensity = lamp * 1.25;
     const envI = lerp(1, .22, night);
     [M.plaster, M.plaster2, M.stone, M.wood, M.woodDark].forEach(m => m.envMapIntensity = envI * .45);
     M.brass.envMapIntensity = envI * 1.2; M.steel.envMapIntensity = envI;
@@ -848,20 +853,9 @@ const hero = (() => {
     const h = Math.floor(hrs), m = Math.round((hrs - h) * 60 / 15) * 15;
     sunOut.textContent = label || String(m === 60 ? h + 1 : h).padStart(2, '0') + ':' + String(m === 60 ? 0 : m).padStart(2, '0');
   }
-  const syncToClock = () => { const { t, label } = nowSun(); sunT = t; sunEl.value = Math.round(t * 100); applySun(t, label); };
-  syncToClock();
-  setInterval(() => { if (!sunTouched) syncToClock(); }, 60000);
+  sunEl.value = Math.round(DUSK * 100);
+  applySun(DUSK);
   sunEl.addEventListener('input', e => { sunTouched = true; applySun(sunT = e.target.value / 100); });
-
-  /* ---------- view modes ---------- */
-  let mode = 'massing';
-  const tgt = { solid: 1, edge: 0 };
-  document.querySelectorAll('#modes button').forEach(b => b.onclick = () => {
-    document.querySelectorAll('#modes button').forEach(x => x.classList.remove('on'));
-    b.classList.add('on'); mode = b.dataset.mode;
-    tgt.solid = mode === 'xray' ? .14 : 1;
-    tgt.edge  = mode === 'massing' ? 0 : mode === 'xray' ? .75 : .35;
-  });
 
   /* ---------- orbit ---------- */
   let yaw = -.42, yawV = 0, pitch = 0, drag = false, px = 0, py = 0, idle = 0;
@@ -882,8 +876,10 @@ const hero = (() => {
     const pr = renderer.getPixelRatio();
     if (canvas.width !== Math.round(w * pr) || canvas.height !== Math.round(h * pr)) {
       renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.fov = w / h < 1 ? 44 : 33;                /* portrait needs a wider lens to hold the house */
+      const a = w / h;
+      camera.aspect = a;
+      /* a narrower stage needs a wider lens to still hold the whole house */
+      camera.fov = a < .9 ? 46 : a < 1.35 ? 39 : a < 1.8 ? 34 : 32;
       camera.updateProjectionMatrix();
     }
   }
@@ -891,7 +887,8 @@ const hero = (() => {
   let visible = true;
   new IntersectionObserver(([e]) => visible = e.isIntersecting, { threshold: 0 }).observe(canvas);
 
-  const DIST = MOB ? 40 : 33;
+  const DIST = MOB ? 50 : 39;
+  const PAN = .135;                    /* radians the lens is yawed, to hold the house off the copy */
   function frame() {
     if (!visible) return;
     resize(); idle++;
@@ -899,25 +896,18 @@ const hero = (() => {
     yaw += yawV; yawV *= .93;
     villa.rotation.y = yaw;
 
-    FADE.forEach(m => {
-      m.opacity = lerp(m.opacity === undefined ? 1 : m.opacity, tgt.solid, .1);
-      m.transparent = m.opacity < .995;
-    });
-    edgeMat.opacity = lerp(edgeMat.opacity, tgt.edge, .1);
-
-    for (const k in parts) {
-      const g = parts[k];
-      g.position.y = lerp(g.position.y, mode === 'explode' ? g.userData.ex : 0, .08);
-    }
-
     const p = clamp(scrollY / Math.max(innerHeight, 1), 0, 1);
     const camX = lerp(DIST * .66, DIST * .34, p) + (RM || MOB ? 0 : mouse.x * -3);
-    const camY = lerp(6.8, 17, p) + pitch * 18 + (RM || MOB ? 0 : mouse.y * -1.8);
+    const camY = lerp(8.4, 17, p) + pitch * 18 + (RM || MOB ? 0 : mouse.y * -1.8);
     const camZ = lerp(DIST, DIST * 1.12, p);
     camera.position.x = lerp(camera.position.x || camX, camX, .06);
     camera.position.y = lerp(camera.position.y || camY, camY, .06);
     camera.position.z = lerp(camera.position.z || camZ, camZ, .06);
-    camera.lookAt(.6, lerp(4.6, 3, p), 1.2);
+    camera.lookAt(.6, lerp(5.2, 3.4, p), 1.2);
+    /* the copy is held low-left, so yaw the lens to seat the house
+       high-right — the two read as one diagonal, not two halves */
+    const aspect = canvas.clientWidth / Math.max(canvas.clientHeight, 1);
+    if (aspect > 1.6) camera.rotateY(PAN);
     sun.target.position.set(0, 3, 0);
 
     renderer.render(scene, camera);

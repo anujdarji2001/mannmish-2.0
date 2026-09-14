@@ -20,34 +20,36 @@ const lerp  = (a,b,t)=>a+(b-a)*t;
   const bar = document.getElementById('ldBar');
   const pct = document.getElementById('ldPct');
   const msg = document.getElementById('ldMsg');
-  if (!ld) { document.body.classList.add('ready'); return; }
+  if (!ld) { document.body.classList.add('ready', 'curtain-up'); return; }
 
   /* every stroke gets its own dash length so it draws at its own pace */
   ld.querySelectorAll('[data-draw]').forEach((el, i) => {
     const len = el.getTotalLength ? Math.ceil(el.getTotalLength()) : 400;
     el.style.setProperty('--len', len);
-    el.style.animationDelay = (i * .09) + 's';
+    el.style.animationDelay = (i * .055) + 's';
   });
 
-  const STAGES = ['Setting out the grid','Casting the slab','Framing the walls',
-                  'Glazing the openings','Handing over the keys'];
+  /* three stages, not five — at this speed five is a flicker, not a read */
+  const STAGES = ['Setting out the grid','Framing the walls','Handing over the keys'];
   let p = 0, stage = -1;
   const finish = () => {
     ld.classList.add('done');
     document.body.classList.add('ready');
-    setTimeout(() => ld.remove(), 1800);
+    /* the shutters need ~1.05s to clear; only then do the page's own
+       drawings start, so they are not spent behind the curtain */
+    setTimeout(() => { ld.remove(); document.body.classList.add('curtain-up'); }, 1100);
   };
   const tick = setInterval(() => {
-    p = Math.min(100, p + 4 + Math.random() * 9);
+    p = Math.min(100, p + 6 + Math.random() * 10);
     if (bar) bar.style.width = p + '%';
     if (pct) pct.textContent = Math.round(p) + '%';
-    const s = Math.min(STAGES.length - 1, Math.floor(p / 21));
+    const s = Math.min(STAGES.length - 1, Math.floor(p / (100 / STAGES.length)));
     if (msg && s !== stage) { stage = s; msg.style.opacity = 0;
-      setTimeout(() => { msg.textContent = STAGES[s]; msg.style.opacity = 1; }, 180); }
-    if (p >= 100) { clearInterval(tick); setTimeout(finish, 520); }
-  }, 170);
+      setTimeout(() => { msg.textContent = STAGES[s]; msg.style.opacity = 1; }, 130); }
+    if (p >= 100) { clearInterval(tick); setTimeout(finish, 380); }
+  }, 140);
   /* never let a stuck loader hide the page */
-  setTimeout(() => { clearInterval(tick); finish(); }, 5200);
+  setTimeout(() => { clearInterval(tick); finish(); }, 3400);
 })();
 
 /* ---- measured drawings: each stroke draws at its own pace ---- */
