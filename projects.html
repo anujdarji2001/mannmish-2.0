@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Work — Mannmish Design Studio</title>
 <meta name="description" content="Selected residential and interior projects by Mannmish Design Studio, Ahmedabad." />
+<meta name="theme-color" content="#f4f1e9" />
 <link rel="icon" href="assets/logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
@@ -16,11 +17,28 @@
 <div class="grain"></div>
 
 <div id="loader">
-  <div class="loader__inner">
-    <div class="loader__name">Mannmish<span style="color:var(--brass)">.</span></div>
-    <div class="loader__bar"><i id="ldBar"></i></div>
-    <div class="loader__pct mono"><span>Loading</span><span id="ldPct">0%</span></div>
+  <div class="ld__in">
+    <svg class="ld__house" viewBox="0 0 220 156" aria-hidden="true">
+      <path class="fillw" d="M98 134 V102 H118 V134 Z"/>
+      <path class="acc" data-draw d="M8 134 H212"/>
+      <path data-draw d="M46 134 V74 H174 V134"/>
+      <path data-draw d="M34 74 H186 V40 H34 Z"/>
+      <path class="acc" data-draw d="M28 40 H192 M28 34 H192"/>
+      <path data-draw d="M56 122 V96 H88 V122 Z M72 96 V122"/>
+      <path data-draw d="M128 122 V96 H164 V122 Z M146 96 V122"/>
+      <path data-draw d="M98 134 V102 H118 V134"/>
+      <path data-draw d="M46 66 V46 H94 V66 Z M70 46 V66"/>
+      <path data-draw d="M118 66 V46 H170 V66 Z M144 46 V66"/>
+      <path data-draw d="M40 134 H180"/>
+      <path class="dim" d="M8 148 H212 M8 143 V153 M212 143 V153 M110 143 V153"/>
+    </svg>
+    <div class="ld__word">Mannmish<i>.</i></div>
+    <div class="ld__sub mono">Design Studio · Ahmedabad</div>
+    <div class="ld__bar"><i id="ldBar"></i></div>
+    <div class="ld__pct mono"><span id="ldMsg">Setting out the grid</span><span id="ldPct">0%</span></div>
   </div>
+  <div class="ld__shutter ld__shutter--t"></div>
+  <div class="ld__shutter ld__shutter--b"></div>
 </div>
 
 <header class="nav" id="nav">
@@ -33,30 +51,82 @@
       <a href="index.html">Home</a>
       <a href="about.html">Studio</a>
       <a href="projects.html" class="on">Work</a>
-      <a href="index.html#services">Expertise</a>
       <a href="contact.html">Contact</a>
     </nav>
     <a class="btn mono" href="contact.html"><i></i>Start a project</a>
-    <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
   </div>
 </header>
-<div class="menu" id="menu"><a href="index.html">Home</a><a href="about.html">Studio</a><a href="projects.html">Work</a><a href="index.html#services">Expertise</a><a href="contact.html">Contact</a></div>
+<div class="menu" id="menu">
+  <div>
+    <a href="index.html">Home</a><a href="about.html">Studio</a><a href="projects.html">Work</a><a href="contact.html">Contact</a>
+  </div>
+  <div class="menu__foot mono">
+    <a href="mailto:mannmishdesignstudio@gmail.com">mannmishdesignstudio@gmail.com</a>
+    <a href="tel:+919662002521">+91 96620 02521</a>
+    <span>Bodakdev · Ahmedabad</span>
+  </div>
+</div>
 
 <main>
 <section class="phero">
-  <div class="wrap">
-    <p class="eyebrow mono rv">Selected Work</p>
-    <h1 class="display rv" data-d="1">Rooms we are<br/>still proud of.</h1>
-    <p class="lede rv" data-d="2" style="margin-top:26px">A visual journey through our design philosophy — residences and interiors delivered across Ahmedabad, drawn and built by the same studio.</p>
+  <div class="wrap phero__grid">
+    <div>
+      <p class="eyebrow mono rv">Selected Work</p>
+      <h1 class="display rv" data-d="1">Rooms we are<br/>still proud of.</h1>
+      <p class="lede rv" data-d="2" style="margin-top:26px">A visual journey through our design philosophy — residences and interiors delivered across Ahmedabad, drawn and built by the same studio.</p>
+    </div>
+    <div class="sheet rv" data-d="2">
+      <svg class="dwg" viewBox="0 0 432 366" aria-label="Plan of a typical residence" role="img">
+        <path class="fillw" d="M48 48 H196 V170 H48 Z M204 48 H352 V170 H204 Z M48 178 H196 V292 H48 Z M204 178 H352 V292 H204 Z"/>
+        <path data-draw d="M40 40 H360 V300 H40 Z"/>
+        <path data-draw d="M48 48 H352 V292 H48 Z"/>
+        <path data-draw d="M196 48 V140 M196 176 V292"/>
+        <path data-draw d="M48 170 H120 M156 170 H196"/>
+        <path data-draw d="M204 178 H300 M336 178 H352"/>
+        <path class="fine" data-draw d="M96 40 V48 M156 40 V48 M96 44 H156"/>
+        <path class="fine" data-draw d="M248 40 V48 M312 40 V48 M248 44 H312"/>
+        <path class="fine" data-draw d="M352 108 H360 M352 168 H360 M356 108 V168"/>
+        <path class="fine" data-draw d="M40 200 H48 M40 256 H48 M44 200 V256"/>
+        <path class="acc" data-draw d="M196 140 a36 36 0 0 1 -36 36"/>
+        <path class="acc" data-draw d="M196 140 V176"/>
+        <path class="acc" data-draw d="M300 178 a36 36 0 0 0 36 -36"/>
+        <path class="acc" data-draw d="M300 178 H336"/>
+        <path class="fine" data-draw d="M70 66 H118 V126 H70 Z M70 80 H118"/>
+        <path class="fine" data-draw d="M132 66 H176 V96 H132 Z"/>
+        <path class="fine" data-draw d="M226 66 H274 V126 H226 Z M226 80 H274"/>
+        <path class="fine" data-draw d="M296 66 H330 V126 H296 Z"/>
+        <path class="fine" data-draw d="M62 196 H186 V214 H62 Z"/>
+        <path class="fine" data-draw d="M76 232 H140 V276 H76 Z"/>
+        <path class="fine" data-draw d="M226 196 H244 V270 H226 Z"/>
+        <path class="fine" data-draw d="M262 210 m-22 0 a22 22 0 1 0 44 0 a22 22 0 1 0 -44 0"/>
+        <path class="fine" data-draw d="M300 240 H340 V282 H300 Z"/>
+        <path class="dim" d="M40 320 H360 M40 314 V326 M360 314 V326 M200 314 V326"/>
+        <path class="dim" d="M20 40 V300 M14 40 H26 M14 300 H26"/>
+        <path class="acc" data-draw d="M400 64 m-15 0 a15 15 0 1 0 30 0 a15 15 0 1 0 -30 0 M400 79 V49 M400 49 l-5 8 M400 49 l5 8"/>
+        <text x="200" y="338" text-anchor="middle">14 400 MM</text>
+        <text x="10" y="172" transform="rotate(-90 10 172)" text-anchor="middle">11 700 MM</text>
+        <text x="122" y="152">BED 01</text>
+        <text x="278" y="152">BED 02</text>
+        <text x="122" y="286">LIVING / DINING</text>
+        <text x="278" y="286">KITCHEN</text>
+        <text class="hot" x="400" y="96" text-anchor="middle">N</text>
+      </svg>
+      <span class="sheet__tag mono">Plan · typical 3 BHK</span>
+      <span class="sheet__stamp mono">DWG 02</span>
+    </div>
   </div>
 </section>
 
-<section class="band">
+<section class="band on-light">
   <div class="wrap">
-    <div class="pfilter mono rv" id="pfilter">
-      <button class="on" data-cat="all">All work</button>
-      <button data-cat="res">Residential</button>
-      <button data-cat="int">Interiors</button>
+    <div class="pbar rv">
+      <div class="pfilter mono" id="pfilter">
+        <button class="on" data-cat="all">All work</button>
+        <button data-cat="res">Residential</button>
+        <button data-cat="int">Interiors</button>
+      </div>
+      <p class="pbar__count mono"><b id="pcount">03</b> projects shown</p>
     </div>
 
     <div class="pgrid" id="pgrid">
@@ -67,7 +137,7 @@
           <img src="assets/project-1.jpg" alt="4BHK Residence, Shilp 14" />
           <span class="pj__view mono">View photo</span>
         </button>
-        <div>
+        <div class="pj__body">
           <p class="pj__kind mono">Residence · Ahmedabad</p>
           <h3>4BHK Residence, Shilp 14</h3>
           <p class="pj__desc">Sophisticated luxury meets modern elegance.</p>
@@ -85,7 +155,7 @@
           <img src="assets/project-2.jpg" alt="3BHK Residence, Shivanta Rigel" loading="lazy" />
           <span class="pj__view mono">View photo</span>
         </button>
-        <div>
+        <div class="pj__body">
           <p class="pj__kind mono">Residence · Ahmedabad</p>
           <h3>3BHK Residence, Shivanta Rigel</h3>
           <p class="pj__desc">Contemporary comfort with functional elegance.</p>
@@ -103,7 +173,7 @@
           <img src="assets/project-3.jpg" alt="Hotwheels Themed Bedroom" loading="lazy" />
           <span class="pj__view mono">View photo</span>
         </button>
-        <div>
+        <div class="pj__body">
           <p class="pj__kind mono">Interior · Themed</p>
           <h3>Hotwheels Themed Bedroom</h3>
           <p class="pj__desc">An immersive car-themed retreat for enthusiasts.</p>
@@ -119,7 +189,7 @@
   </div>
 </section>
 
-<section class="band band--alt">
+<section class="band on-light tint">
   <div class="wrap">
     <div class="shead rv">
       <div>
@@ -127,11 +197,31 @@
         <h2 class="display">Four ways a project usually reaches us.</h2>
       </div>
     </div>
-    <div class="rows rv">
-      <div class="row"><span class="mono" style="color:var(--brass)">A / 01</span><b>Residential interiors</b><span>Apartments and bungalows, from layout to the last light fitting.</span><span class="mono">Turnkey</span></div>
-      <div class="row"><span class="mono" style="color:var(--brass)">A / 02</span><b>Architecture &amp; planning</b><span>New builds and redevelopment, with structure and services integrated.</span><span class="mono">Drawings + site</span></div>
-      <div class="row"><span class="mono" style="color:var(--brass)">A / 03</span><b>Commercial &amp; office</b><span>Workplaces and retail delivered around a live business calendar.</span><span class="mono">Fit-out</span></div>
-      <div class="row"><span class="mono" style="color:var(--brass)">A / 04</span><b>Themed &amp; bespoke rooms</b><span>Single rooms built around one idea — with custom joinery to match.</span><span class="mono">Bespoke</span></div>
+    <div class="flow rv">
+      <article class="flow__i"><span class="flow__ghost">01</span>
+        <span class="flow__no mono">A / 01</span>
+        <h3>Residential interiors</h3>
+        <p>Apartments and bungalows, from the first layout to the last light fitting — drawn, costed and executed by one team.</p>
+        <div class="flow__foot mono"><span>Engagement</span><b>Turnkey</b></div>
+      </article>
+      <article class="flow__i"><span class="flow__ghost">02</span>
+        <span class="flow__no mono">A / 02</span>
+        <h3>Architecture &amp; planning</h3>
+        <p>New builds and redevelopment, with structure, services and approvals integrated into the drawing set from day one.</p>
+        <div class="flow__foot mono"><span>Engagement</span><b>Drawings + site</b></div>
+      </article>
+      <article class="flow__i"><span class="flow__ghost">03</span>
+        <span class="flow__no mono">A / 03</span>
+        <h3>Commercial &amp; office</h3>
+        <p>Workplaces and retail delivered around a live business calendar, so the space changes without the work stopping.</p>
+        <div class="flow__foot mono"><span>Engagement</span><b>Fit-out</b></div>
+      </article>
+      <article class="flow__i"><span class="flow__ghost">04</span>
+        <span class="flow__no mono">A / 04</span>
+        <h3>Themed &amp; bespoke rooms</h3>
+        <p>A single room built around one idea, with custom joinery drawn for it — the kind of brief nobody has a catalogue for.</p>
+        <div class="flow__foot mono"><span>Engagement</span><b>Bespoke</b></div>
+      </article>
     </div>
   </div>
 </section>
@@ -162,7 +252,7 @@
     <div class="lb__img"><img id="lbImg" src="" alt="" /></div>
     <figcaption class="lb__cap">
       <div>
-        <p class="mono" id="lbKind" style="color:var(--brass)"></p>
+        <p class="mono acc" id="lbKind"></p>
         <h3 id="lbTitle"></h3>
       </div>
       <div class="lb__nav">
@@ -182,7 +272,7 @@
           <span><b>Mannmish</b><span>Design Studio</span></span>
         </a>
         <p>Where vision meets craftsmanship. We create spaces that tell stories, blending contemporary design with timeless elegance.</p>
-        <p class="mono" style="color:var(--brass);margin-top:16px">Architecture · Interior · Construction</p>
+        <p class="mono" class="acc" style="margin-top:16px">Architecture · Interior · Construction</p>
       </div>
       <div>
         <h4>Studio</h4>
@@ -235,6 +325,8 @@
       p.classList.toggle('hide', !show); if (show) n++;
     });
     empty.style.display = n ? 'none' : 'block';
+    const c = document.getElementById('pcount');
+    if (c) c.textContent = String(n).padStart(2, '0');
   });
 })();
 

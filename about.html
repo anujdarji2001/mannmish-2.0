@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Studio — Mannmish Design Studio</title>
 <meta name="description" content="Manank Patel and Michelle Chokshi — civil engineering precision and architectural vision, working from one table in Ahmedabad." />
+<meta name="theme-color" content="#f4f1e9" />
 <link rel="icon" href="assets/logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
@@ -16,11 +17,28 @@
 <div class="grain"></div>
 
 <div id="loader">
-  <div class="loader__inner">
-    <div class="loader__name">Mannmish<span style="color:var(--brass)">.</span></div>
-    <div class="loader__bar"><i id="ldBar"></i></div>
-    <div class="loader__pct mono"><span>Loading</span><span id="ldPct">0%</span></div>
+  <div class="ld__in">
+    <svg class="ld__house" viewBox="0 0 220 156" aria-hidden="true">
+      <path class="fillw" d="M98 134 V102 H118 V134 Z"/>
+      <path class="acc" data-draw d="M8 134 H212"/>
+      <path data-draw d="M46 134 V74 H174 V134"/>
+      <path data-draw d="M34 74 H186 V40 H34 Z"/>
+      <path class="acc" data-draw d="M28 40 H192 M28 34 H192"/>
+      <path data-draw d="M56 122 V96 H88 V122 Z M72 96 V122"/>
+      <path data-draw d="M128 122 V96 H164 V122 Z M146 96 V122"/>
+      <path data-draw d="M98 134 V102 H118 V134"/>
+      <path data-draw d="M46 66 V46 H94 V66 Z M70 46 V66"/>
+      <path data-draw d="M118 66 V46 H170 V66 Z M144 46 V66"/>
+      <path data-draw d="M40 134 H180"/>
+      <path class="dim" d="M8 148 H212 M8 143 V153 M212 143 V153 M110 143 V153"/>
+    </svg>
+    <div class="ld__word">Mannmish<i>.</i></div>
+    <div class="ld__sub mono">Design Studio · Ahmedabad</div>
+    <div class="ld__bar"><i id="ldBar"></i></div>
+    <div class="ld__pct mono"><span id="ldMsg">Setting out the grid</span><span id="ldPct">0%</span></div>
   </div>
+  <div class="ld__shutter ld__shutter--t"></div>
+  <div class="ld__shutter ld__shutter--b"></div>
 </div>
 
 <header class="nav" id="nav">
@@ -33,14 +51,22 @@
       <a href="index.html">Home</a>
       <a href="about.html" class="on">Studio</a>
       <a href="projects.html">Work</a>
-      <a href="index.html#services">Expertise</a>
       <a href="contact.html">Contact</a>
     </nav>
     <a class="btn mono" href="contact.html"><i></i>Start a project</a>
-    <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
   </div>
 </header>
-<div class="menu" id="menu"><a href="index.html">Home</a><a href="about.html">Studio</a><a href="projects.html">Work</a><a href="index.html#services">Expertise</a><a href="contact.html">Contact</a></div>
+<div class="menu" id="menu">
+  <div>
+    <a href="index.html">Home</a><a href="about.html">Studio</a><a href="projects.html">Work</a><a href="contact.html">Contact</a>
+  </div>
+  <div class="menu__foot mono">
+    <a href="mailto:mannmishdesignstudio@gmail.com">mannmishdesignstudio@gmail.com</a>
+    <a href="tel:+919662002521">+91 96620 02521</a>
+    <span>Bodakdev · Ahmedabad</span>
+  </div>
+</div>
 
 <main>
 <section class="phero">
@@ -50,14 +76,52 @@
       <h1 class="display rv" data-d="1">Two disciplines,<br/>one table.</h1>
       <p class="lede rv" data-d="2">Mannmish Design Studio was born from a shared vision: spaces that serve their purpose and still lift the people inside them. Our journey began with the union of two complementary skill sets — civil engineering precision and architectural creativity.</p>
     </div>
-    <div class="phero__art rv" data-d="2">
-      <canvas id="cvAbout"></canvas>
-      <span class="mono">Slab · structure · envelope</span>
+    <div class="sheet rv" data-d="2">
+      <svg class="dwg" viewBox="0 0 400 360" aria-label="Section through a typical residence" role="img">
+        <path class="fillw" d="M232 236 H318 V276 H232 Z M232 140 H318 V180 H232 Z"/>
+        <path class="acc" data-draw d="M16 300 H384"/>
+        <path class="fine" data-draw d="M40 300 l-9 11 M70 300 l-9 11 M100 300 l-9 11 M130 300 l-9 11 M160 300 l-9 11 M190 300 l-9 11 M220 300 l-9 11 M250 300 l-9 11 M280 300 l-9 11 M310 300 l-9 11 M340 300 l-9 11 M370 300 l-9 11"/>
+        <path data-draw d="M58 300 V292 H342 V300"/>
+        <path data-draw d="M58 292 V204 M342 292 V204"/>
+        <path data-draw d="M50 196 H350 V204 H50 Z"/>
+        <path data-draw d="M58 196 V104 M342 196 V104"/>
+        <path data-draw d="M44 96 H356 V104 H44 Z"/>
+        <path data-draw d="M44 96 V70 H53 V96 M356 96 V70 H347 V96"/>
+        <path class="acc" data-draw d="M120 56 H250 M134 56 V47 M162 56 V47 M190 56 V47 M218 56 V47 M246 56 V47"/>
+        <path data-draw d="M196 292 h10 v-11 h10 v-11 h10 v-11 h10 v-11 h10 v-11 h10 v-11 h10 v-11 h10 v-11"/>
+        <path class="fine" data-draw d="M196 292 L276 204"/>
+        <path class="fine" data-draw d="M150 292 V204"/>
+        <path data-draw d="M232 236 H318 V276 H232 Z"/>
+        <path class="fine" data-draw d="M275 236 V276"/>
+        <path data-draw d="M232 140 H318 V180 H232 Z"/>
+        <path class="fine" data-draw d="M275 140 V180"/>
+        <path class="fine" data-draw d="M76 292 V276 H124 V292 M76 280 H124"/>
+        <path class="fine" data-draw d="M138 292 V283 H166 V292"/>
+        <path class="fine" data-draw d="M76 196 V178 H136 V196 M76 185 H136"/>
+        <path class="fine" data-draw d="M300 196 V156 H330 V196"/>
+        <path class="fine" data-draw d="M372 300 V262"/>
+        <path class="fine" data-draw d="M372 262 m-17 0 a17 17 0 1 0 34 0 a17 17 0 1 0 -34 0"/>
+        <path class="acc" data-draw d="M40 44 m-11 0 a11 11 0 1 0 22 0 a11 11 0 1 0 -22 0"/>
+        <path class="acc" data-draw d="M40 24 V16 M40 64 V72 M20 44 H12 M60 44 H68 M26 30 L20 24 M54 30 L60 24"/>
+        <path class="fine" data-draw d="M104 256 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0"/>
+        <path class="fine" data-draw d="M110 262 V278 M110 266 L101 274 M110 266 L119 274 M110 278 L103 292 M110 278 L117 292"/>
+        <path class="dim" d="M56 60 L146 150 M146 150 l-10 1 M146 150 l-1 -10"/>
+        <path class="dim" d="M356 96 H392 M350 196 H392 M342 300 H392"/>
+        <path class="dim" d="M58 322 H342 M58 316 V328 M342 316 V328"/>
+        <text x="392" y="92" text-anchor="end">+7.30</text>
+        <text x="392" y="192" text-anchor="end">+3.80</text>
+        <text x="392" y="296" text-anchor="end">±0.00</text>
+        <text x="200" y="338" text-anchor="middle">11 200 MM</text>
+        <text class="hot" x="62" y="84">SUN PATH</text>
+        <text x="384" y="356" text-anchor="end">SCALE 1:100</text>
+      </svg>
+      <span class="sheet__tag mono">Section A–A · typical residence</span>
+      <span class="sheet__stamp mono">DWG 01</span>
     </div>
   </div>
 </section>
 
-<section class="band">
+<section class="band on-light tint">
   <div class="wrap">
     <div class="shead rv">
       <div>
@@ -81,7 +145,7 @@
   </div>
 </section>
 
-<section class="band band--alt">
+<section class="band">
   <div class="wrap">
     <div class="shead rv">
       <div>
@@ -91,26 +155,40 @@
     </div>
     <div class="profiles">
       <article class="profile rv">
-        <span class="ini">MP</span>
-        <div>
-          <h3>Manank Patel</h3>
-          <p class="role mono">B.E. Civil Engineer</p>
+        <div class="profile__hd">
+          <span class="ini">MP</span>
+          <div>
+            <h3>Manank Patel</h3>
+            <p class="role mono">B.E. Civil Engineer</p>
+          </div>
         </div>
         <p>With a strong foundation in civil engineering, Manank brings technical precision and structural expertise to every project. His background ensures designs are not only good-looking but structurally sound and compliant with safety standards.</p>
+        <ul>
+          <li>Structure, services &amp; site feasibility</li>
+          <li>Working drawings, BOQs &amp; costing</li>
+          <li>Contractors, quality checks &amp; handover</li>
+        </ul>
       </article>
       <article class="profile rv" data-d="1">
-        <span class="ini">MC</span>
-        <div>
-          <h3>Michelle Chokshi</h3>
-          <p class="role mono">B.Arch (COA) · M.Plan (ITPI)</p>
+        <div class="profile__hd">
+          <span class="ini">MC</span>
+          <div>
+            <h3>Michelle Chokshi</h3>
+            <p class="role mono">B.Arch (COA) · M.Plan (ITPI)</p>
+          </div>
         </div>
         <p>Michelle combines architectural and design expertise with master planning knowledge to create holistic solutions that are innovative, functional and timeless. Each project reflects her belief that architecture should serve both people and place.</p>
+        <ul>
+          <li>Concept, planning &amp; spatial design</li>
+          <li>Interiors, materials &amp; joinery detail</li>
+          <li>Client presentations &amp; approvals</li>
+        </ul>
       </article>
     </div>
   </div>
 </section>
 
-<section class="band">
+<section class="band on-light">
   <div class="wrap">
     <div class="shead rv">
       <div>
@@ -118,15 +196,30 @@
         <h2 class="display">Functional and beautiful. Sustainable and inventive. Timeless, yet of now.</h2>
       </div>
     </div>
-    <div class="vals rv">
-      <div class="val"><span class="mono" style="color:var(--brass)">01</span><b>Client-Centric</b><p>Every project begins with understanding your needs, your lifestyle and your vision. We collaborate closely the whole way through the design process.</p></div>
-      <div class="val"><span class="mono" style="color:var(--brass)">02</span><b>Quality Excellence</b><p>We hold the highest standards in design execution, material selection and construction supervision, so the quality outlasts the handover.</p></div>
-      <div class="val"><span class="mono" style="color:var(--brass)">03</span><b>Sustainable Design</b><p>Environmental responsibility is part of the process, not an add-on. We build spaces that are energy-efficient and environmentally conscious.</p></div>
+    <div class="flow rv">
+      <article class="flow__i"><span class="flow__ghost">01</span>
+        <span class="flow__no mono">Value 01</span>
+        <h3>Client-Centric</h3>
+        <p>Every project begins with understanding your needs, your lifestyle and your vision. We collaborate closely the whole way through the design process.</p>
+        <div class="flow__foot mono"><span>Shows up as</span><b>Fewer surprises</b></div>
+      </article>
+      <article class="flow__i"><span class="flow__ghost">02</span>
+        <span class="flow__no mono">Value 02</span>
+        <h3>Quality Excellence</h3>
+        <p>We hold the highest standards in design execution, material selection and construction supervision, so the quality outlasts the handover.</p>
+        <div class="flow__foot mono"><span>Shows up as</span><b>Detail that lasts</b></div>
+      </article>
+      <article class="flow__i"><span class="flow__ghost">03</span>
+        <span class="flow__no mono">Value 03</span>
+        <h3>Sustainable Design</h3>
+        <p>Environmental responsibility is part of the process, not an add-on. We build spaces that are energy-efficient and environmentally conscious.</p>
+        <div class="flow__foot mono"><span>Shows up as</span><b>Lower running cost</b></div>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="band band--alt">
+<section class="band on-light tint">
   <div class="wrap">
     <div class="shead rv">
       <div>
@@ -134,12 +227,37 @@
         <h2 class="display">Five stages, from first conversation to keys.</h2>
       </div>
     </div>
-    <div class="steps rv">
-      <div class="step"><span class="no mono">Stage 01</span><b>Brief &amp; site study</b><p>We listen, measure and study the site — light, access, services and the rules that govern the plot — before a single line is drawn.</p></div>
-      <div class="step"><span class="no mono">Stage 02</span><b>Concept &amp; planning</b><p>Massing, circulation and layout options, presented as drawings and 3D views you can actually read and react to.</p></div>
-      <div class="step"><span class="no mono">Stage 03</span><b>Design development</b><p>Materials, joinery, lighting and services are resolved together, so the detail you approve is the detail that gets built.</p></div>
-      <div class="step"><span class="no mono">Stage 04</span><b>Working drawings</b><p>Dimensioned drawings, schedules and BOQs for every trade — the set that keeps the site honest and the budget intact.</p></div>
-      <div class="step"><span class="no mono">Stage 05</span><b>Execution &amp; handover</b><p>Vendor coordination, quality checks and site supervision through to snagging, cleaning and the day you move in.</p></div>
+    <div class="flow rv">
+      <article class="flow__i"><span class="flow__ghost">01</span>
+        <span class="flow__no mono">Stage 01</span>
+        <h3>Brief &amp; site study</h3>
+        <p>We listen, measure and study the site — light, access, services and the rules that govern the plot — before a single line is drawn.</p>
+        <div class="flow__foot mono"><span>You get</span><b>Site report</b></div>
+      </article>
+      <article class="flow__i"><span class="flow__ghost">02</span>
+        <span class="flow__no mono">Stage 02</span>
+        <h3>Concept &amp; planning</h3>
+        <p>Massing, circulation and layout options, presented as drawings and 3D views you can actually read and react to.</p>
+        <div class="flow__foot mono"><span>You get</span><b>Layout options</b></div>
+      </article>
+      <article class="flow__i"><span class="flow__ghost">03</span>
+        <span class="flow__no mono">Stage 03</span>
+        <h3>Design development</h3>
+        <p>Materials, joinery, lighting and services are resolved together, so the detail you approve is the detail that gets built.</p>
+        <div class="flow__foot mono"><span>You get</span><b>Material board</b></div>
+      </article>
+      <article class="flow__i"><span class="flow__ghost">04</span>
+        <span class="flow__no mono">Stage 04</span>
+        <h3>Working drawings</h3>
+        <p>Dimensioned drawings, schedules and BOQs for every trade — the set that keeps the site honest and the budget intact.</p>
+        <div class="flow__foot mono"><span>You get</span><b>GFC set + BOQ</b></div>
+      </article>
+      <article class="flow__i"><span class="flow__ghost">05</span>
+        <span class="flow__no mono">Stage 05</span>
+        <h3>Execution &amp; handover</h3>
+        <p>Vendor coordination, quality checks and site supervision through to snagging, cleaning and the day you move in.</p>
+        <div class="flow__foot mono"><span>You get</span><b>The keys</b></div>
+      </article>
     </div>
   </div>
 </section>
@@ -173,7 +291,7 @@
           <span><b>Mannmish</b><span>Design Studio</span></span>
         </a>
         <p>Where vision meets craftsmanship. We create spaces that tell stories, blending contemporary design with timeless elegance.</p>
-        <p class="mono" style="color:var(--brass);margin-top:16px">Architecture · Interior · Construction</p>
+        <p class="mono" class="acc" style="margin-top:16px">Architecture · Interior · Construction</p>
       </div>
       <div>
         <h4>Studio</h4>
@@ -213,68 +331,5 @@
 </footer>
 
 <script src="assets/site.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-/* about hero — a slowly turning exploded slab stack */
-(() => {
-  const canvas = document.getElementById('cvAbout');
-  if (!window.THREE || !canvas) return;
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-  renderer.outputEncoding = THREE.sRGBEncoding;
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.OrthographicCamera(-7, 7, 7, -7, .1, 120);
-  camera.position.set(12, 10, 13); camera.lookAt(0, .6, 0);
-  scene.add(new THREE.HemisphereLight(0xd7e2ee, 0x16171b, 1));
-  const key = new THREE.DirectionalLight(0xfff3e2, 1.25); key.position.set(9, 16, 7); scene.add(key);
-  const fill = new THREE.DirectionalLight(0xc8a15a, .45); fill.position.set(-11, 5, -9); scene.add(fill);
-
-  const root = new THREE.Group(); scene.add(root);
-  const slab = new THREE.MeshStandardMaterial({ color: 0xcac4b8, roughness: .9 });
-  const glass = new THREE.MeshStandardMaterial({ color: 0x9cc3d6, roughness: .08, metalness: .3, transparent: true, opacity: .3 });
-  const brass = new THREE.MeshStandardMaterial({ color: 0xc8a15a, roughness: .35, metalness: .85 });
-  const edge = new THREE.LineBasicMaterial({ color: 0xf4f1ea, transparent: true, opacity: .28 });
-
-  const box = (mat, w, h, d, x, y, z, wire) => {
-    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
-    m.position.set(x, y, z);
-    if (wire !== false) m.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry), edge));
-    root.add(m); return m;
-  };
-
-  const LV = [-2.2, .6, 3.4];                 // three floor plates, exploded apart
-  LV.forEach((y, i) => {
-    box(slab, 7.4 - i * .5, .22, 5.4 - i * .4, 0, y, 0);
-    for (let c = 0; c < 4; c++) {
-      const sx = c < 2 ? -1 : 1, sz = c % 2 ? -1 : 1;
-      box(brass, .16, 1.5, .16, sx * (2.9 - i * .25), y + .86, sz * (1.9 - i * .2), false);
-    }
-    if (i < 2) box(glass, 6.3 - i * .5, 1.4, 4.4 - i * .4, 0, y + .82, 0, false);
-  });
-  box(slab, 6.4, .18, 4.6, 0, 5.1, 0);        // roof
-
-  let visible = true, spin = .5;
-  new IntersectionObserver(([e]) => visible = e.isIntersecting, { threshold: 0 }).observe(canvas);
-  const RM2 = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  (function loop() {
-    requestAnimationFrame(loop);
-    if (!visible) return;
-    const w = canvas.clientWidth, h = canvas.clientHeight;
-    if (!w || !h) return;
-    const pr = renderer.getPixelRatio();
-    if (canvas.width !== Math.round(w * pr) || canvas.height !== Math.round(h * pr)) {
-      renderer.setSize(w, h, false);
-      const f = 6.6, a = w / h;
-      camera.left = -f * a; camera.right = f * a; camera.top = f; camera.bottom = -f;
-      camera.updateProjectionMatrix();
-    }
-    if (!RM2) spin += .0022;
-    root.rotation.y = spin;
-    renderer.render(scene, camera);
-  })();
-})();
-</script>
 </body>
 </html>
