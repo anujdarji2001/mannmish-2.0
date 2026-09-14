@@ -262,19 +262,54 @@ section{position:relative}
 .shead .idx{color:var(--acc)}
 
 /* ---------- studio / intro ---------- */
-.intro{padding:clamp(84px,11vw,164px) 0}
+.intro{padding:clamp(84px,11vw,164px) 0;overflow:hidden}
+/* a faint drafting grid behind a band, fading out before it reaches the edges */
+.sgrid{position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:78px 78px;background-position:center;
+  -webkit-mask-image:radial-gradient(100% 80% at 50% 40%,#000 10%,transparent 78%);
+          mask-image:radial-gradient(100% 80% at 50% 40%,#000 10%,transparent 78%)}
+.sgrid ~ .wrap{position:relative;z-index:1}
 .intro__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(36px,6vw,96px);align-items:start}
-.intro p.big{font-family:'Instrument Serif',serif;font-size:clamp(23px,2.7vw,40px);line-height:1.24;margin:0 0 26px}
+
+/* the pull quote hangs off a clay rule, the way a margin note would */
+.intro p.big{position:relative;font-family:'Instrument Serif',serif;font-size:clamp(23px,2.7vw,40px);
+  line-height:1.24;margin:0 0 26px;padding-left:clamp(20px,2.4vw,34px)}
+.intro p.big::before{content:"";position:absolute;left:0;top:.16em;bottom:.1em;width:2px;
+  background:linear-gradient(180deg,var(--acc),rgba(191,70,28,0))}
 .intro p.big em{font-style:italic;color:var(--acc)}
-.founders{display:grid;gap:16px;margin-top:36px}
-.founder{display:flex;gap:16px;align-items:baseline;border-top:1px solid var(--line-soft);padding-top:15px}
-.founder b{font-weight:400;font-size:17px;min-width:170px}
-.founder span{color:var(--muted)}
+.intro>.wrap>.intro__grid .lede{padding-left:clamp(20px,2.4vw,34px)}
+
+/* founders — a monogram, the name, and what each of them actually runs */
+.founders{display:grid;gap:12px;margin-top:clamp(30px,3.4vw,44px)}
+.founder{display:flex;gap:18px;align-items:center;padding:16px 20px;background:var(--surface);
+  border:1px solid var(--line-soft);border-radius:14px;box-shadow:var(--shadow);
+  transition:transform .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease)}
+.founder:hover{transform:translateY(-3px);border-color:rgba(191,70,28,.34);box-shadow:var(--shadow-lg)}
+.founder__ini{width:48px;height:48px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:var(--paper-alt);border:1px solid var(--line-soft);color:var(--acc);
+  font-family:'Instrument Serif',serif;font-size:17px;letter-spacing:.02em;
+  transition:background .45s var(--ease),color .45s var(--ease),border-color .45s var(--ease)}
+.founder:hover .founder__ini{background:var(--acc);color:#fff;border-color:var(--acc)}
+.founder__id{min-width:0;flex:1}
+.founder__id b{display:block;font-weight:400;font-size:17px;line-height:1.3}
+.founder__id span{color:var(--muted);display:block;margin-top:3px}
+.founder__role{flex:none;color:var(--acc);padding:6px 11px;border-radius:99px;
+  background:rgba(191,70,28,.08);border:1px solid rgba(191,70,28,.18);font-size:9.5px}
+
+/* stats — each cell reads as a numbered entry, with a clay rule that fills on hover */
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);
   border:1px solid var(--line-soft);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-.stat{background:var(--surface);padding:clamp(20px,2.6vw,34px)}
+.stat{position:relative;background:var(--surface);padding:clamp(22px,2.6vw,34px);
+  transition:background .4s var(--ease)}
+.stat::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--acc);
+  transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.stat:hover{background:var(--paper-alt)}
+.stat:hover::after{transform:scaleX(1)}
+.stat__k{display:block;color:var(--acc);opacity:.5;margin-bottom:clamp(14px,1.8vw,24px);font-size:10px}
 .stat b{display:block;font-family:'Instrument Serif',serif;font-size:clamp(36px,4.6vw,58px);line-height:1;letter-spacing:-.02em}
-.stat span{color:var(--muted);margin-top:8px;display:block}
+.stat__l{color:var(--muted);margin-top:10px;display:block;font-size:10px}
 
 /* ---------- plan explorer ---------- */
 .plan{padding:clamp(70px,9vw,128px) 0;background:var(--paper-alt);border-block:1px solid var(--line-soft)}
@@ -472,6 +507,12 @@ section{position:relative}
   .exgrid .ex:last-child{grid-column:auto}
   .plan__stage{min-height:0;aspect-ratio:1/1}
   .stats{grid-template-columns:1fr 1fr}
+  .stat__k{margin-bottom:12px}
+  /* the discipline tag drops under the name rather than squeezing it */
+  .founder{flex-wrap:wrap;gap:14px}
+  .founder__id{flex:1 1 60%}
+  .founder__role{margin-left:66px}
+  .intro p.big,.intro>.wrap>.intro__grid .lede,.prose p{padding-left:18px}
   .vx__feat{min-height:0}
   .vx__feat::before{font-size:110px;top:-6px;right:16px}
   /* one client per row: flex-basis:0 from the base rule was overriding width */
@@ -532,11 +573,14 @@ section{position:relative}
 .curtain-up .rv.in .dwg text{animation:dimIn .5s ease 1.2s forwards}
 .dwg text.hot{fill:var(--acc)}
 
-.band{padding:clamp(70px,9vw,136px) 0}
+.band{padding:clamp(70px,9vw,136px) 0;overflow:hidden}
 .band--alt{background:var(--paper-alt);border-block:1px solid var(--line-soft)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
-.prose p{color:var(--muted);margin:0 0 18px;max-width:58ch}
-.prose p.big{font-family:'Instrument Serif',serif;color:var(--ink);font-size:clamp(22px,2.5vw,36px);line-height:1.26;margin-bottom:24px}
+.prose p{color:var(--muted);margin:0 0 18px;max-width:58ch;padding-left:clamp(20px,2.4vw,34px)}
+.prose p.big{position:relative;font-family:'Instrument Serif',serif;color:var(--ink);
+  font-size:clamp(22px,2.5vw,36px);line-height:1.26;margin-bottom:24px}
+.prose p.big::before{content:"";position:absolute;left:0;top:.16em;bottom:.1em;width:2px;
+  background:linear-gradient(180deg,var(--acc),rgba(191,70,28,0))}
 .prose p.big em{font-style:italic;color:var(--acc)}
 
 /* ---------- founder profiles ---------- */
