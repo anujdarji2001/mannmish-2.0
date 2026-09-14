@@ -505,7 +505,11 @@ section{position:relative}
   .menu{display:flex}
   .cards,.exgrid{grid-template-columns:1fr}
   .exgrid .ex:last-child{grid-column:auto}
-  .plan__stage{min-height:0;aspect-ratio:1/1}
+  /* iOS Safari ignores aspect-ratio on a STRETCHED grid item, and the stage's
+     children are all absolutely positioned — so the box collapsed to zero height
+     and the whole 3D stage vanished. align-self takes it out of the stretch, and
+     the min-height holds it open even if aspect-ratio is ignored entirely. */
+  .plan__stage{align-self:start;min-height:min(86vw,440px);aspect-ratio:1/1}
   .stats{grid-template-columns:1fr 1fr}
   .stat__k{margin-bottom:12px}
   /* the discipline tag drops under the name rather than squeezing it */
