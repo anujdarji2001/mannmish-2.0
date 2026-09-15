@@ -178,6 +178,7 @@
         </div>
         <div class="plan__tag mono">Typical 3 BHK · 1,505 sq.ft carpet</div>
         <div class="plan__hint mono"><span class="only-desk">Drag to rotate · Hover a room · Switch to true plan</span><span class="only-mob">Drag to rotate · Tap a room</span></div>
+        <div class="plan__label" id="planLabel" aria-hidden="true"><b id="planLabelName"></b><i class="mono" id="planLabelArea"></i></div>
       </div>
 
       <div class="plan__side rv" data-d="1">
@@ -548,8 +549,13 @@ const hero = (() => {
     leafC:    new THREE.MeshStandardMaterial({ color: 0x27402c, roughness: 1, flatShading: true }),
     bark:     new THREE.MeshStandardMaterial({ color: 0x4b3a2a, roughness: 1 }),
     pot:      new THREE.MeshStandardMaterial({ color: 0xa9603c, roughness: .85 }),
-    car:      new THREE.MeshStandardMaterial({ color: 0x1f2a35, roughness: .22, metalness: .75, envMapIntensity: 1.3 }),
-    carGlass: new THREE.MeshStandardMaterial({ color: 0x22303a, roughness: .06, metalness: .5, envMapIntensity: 1.5 }),
+    car:      new THREE.MeshPhysicalMaterial({ color: 0x1f2a35, roughness: .34, metalness: .7, envMapIntensity: 1.3,
+                                               clearcoat: 1, clearcoatRoughness: .04 }),   /* paint, not bare metal */
+    carGlass: new THREE.MeshStandardMaterial({ color: 0x151d24, roughness: .05, metalness: .55, envMapIntensity: 1.6 }),
+    head:     new THREE.MeshPhysicalMaterial({ color: 0xd9e2e8, roughness: .07, metalness: .2, envMapIntensity: 2,
+                                               emissive: 0xfff0d6, emissiveIntensity: 0, clearcoat: 1 }),
+    tail:     new THREE.MeshStandardMaterial({ color: 0x5c0d11, roughness: .16, metalness: .35, envMapIntensity: 1.4,
+                                               emissive: 0xff2417, emissiveIntensity: 0 }),
     tyre:     new THREE.MeshStandardMaterial({ color: 0x16171a, roughness: .95 }),
     solar:    new THREE.MeshStandardMaterial({ color: 0x1c2a44, roughness: .2, metalness: .6, envMapIntensity: 1.2 }),
     tank:     new THREE.MeshStandardMaterial({ color: 0x2b2f33, roughness: .7 })
@@ -716,17 +722,124 @@ const hero = (() => {
   cyl(gGround, M.steel, .13, .13, S1 - .3, 8.3, (S1 - .3) / 2 + .1, HZ + 5.1, 12);
   const porchLight = cyl(gGround, M.glow, .22, .22, .1, 4.6, S1 - .34, HZ + 2.8, 12);
 
-  /* the car under the porch */
+  /* ---------- the car under the porch ----------
+     A car is read by its section, not its details, so the body is one
+     profile — bonnet, belt line, wheel arches — extruded across the width,
+     with a narrower greenhouse sat on top and the arches left open. */
   (() => {
     const g = new THREE.Group(); g.position.set(4.8, 0, 9.4); g.rotation.y = .06; gGround.add(g);
-    box(g, M.car, 1.95, .62, 4.35, 0, .72, 0);
-    box(g, M.car, 1.8, .48, 2.3, 0, 1.22, -.18);
-    box(g, M.carGlass, 1.74, .42, 2.34, 0, 1.24, -.18);
-    box(g, M.trim, 1.98, .12, 4.3, 0, .45, 0);
-    box(g, M.glow, 1.5, .12, .07, 0, .82, 2.2);
-    [[-.86, 1.5], [.86, 1.5], [-.86, -1.45], [.86, -1.45]].forEach(([x, z]) => {
-      const w = cyl(g, M.tyre, .36, .36, .26, x, .38, z, 14); w.rotation.z = Math.PI / 2;
+    const HALFW = .94;                                   /* body half width; +z is the nose */
+
+    /* extrude a profile drawn in (length, height) across the car */
+    function shell(mat, shape, width, bev = .05) {
+      const geo = new THREE.ExtrudeGeometry(shape, { depth: width - bev * 2, curveSegments: 16,
+        bevelEnabled: true, bevelSize: bev, bevelThickness: bev, bevelSegments: 3 });
+      geo.translate(0, 0, -(width - bev * 2) / 2);
+      geo.rotateY(-Math.PI / 2);                         /* extrusion now runs across the car */
+      const m = new THREE.Mesh(geo, mat);
+      m.castShadow = m.receiveShadow = true; g.add(m); return m;
+    }
+    /* a bar between two points of that same profile — pillars, shut lines, trims */
+    function strut(mat, x, z1, y1, z2, y2, w = .085, t = .07) {
+      const dz = z2 - z1, dy = y2 - y1;
+      const m = new THREE.Mesh(new THREE.BoxGeometry(w, t, Math.hypot(dz, dy)), mat);
+      m.position.set(x, (y1 + y2) / 2, (z1 + z2) / 2);
+      m.rotation.x = -Math.atan2(dy, dz);
+      m.castShadow = m.receiveShadow = true; g.add(m); return m;
+    }
+
+    /* body: nose, bonnet, belt line, boot — and the two arches cut out of the sill */
+    const body = new THREE.Shape();
+    body.moveTo(-2.12, .56);
+    body.lineTo(-2.08, .40);
+    body.lineTo(-1.98, .40);
+    body.absarc(-1.40, .40, .58, Math.PI, 0, true);      // rear arch
+    body.lineTo(.84, .40);
+    body.absarc(1.42, .40, .58, Math.PI, 0, true);       // front arch
+    body.lineTo(2.02, .42);
+    body.quadraticCurveTo(2.20, .48, 2.22, .74);         // nose
+    body.quadraticCurveTo(2.24, .96, 2.06, 1.02);        // bonnet leading edge
+    body.quadraticCurveTo(1.72, 1.09, 1.22, 1.12);       // bonnet
+    body.lineTo(-1.66, 1.13);                            // belt line
+    body.lineTo(-2.02, 1.10);
+    body.quadraticCurveTo(-2.20, 1.05, -2.18, .84);      // rear haunch
+    body.closePath();
+    shell(M.car, body, 1.88);
+
+    /* greenhouse: windscreen, roof, backlight — tinted, and set in from the body */
+    const cabin = new THREE.Shape();
+    cabin.moveTo(1.22, 1.10);
+    cabin.quadraticCurveTo(.72, 1.22, .34, 1.53);        // windscreen
+    cabin.quadraticCurveTo(.04, 1.62, -.36, 1.62);       // roof
+    cabin.lineTo(-1.02, 1.56);
+    cabin.quadraticCurveTo(-1.44, 1.50, -1.60, 1.16);    // backlight
+    cabin.lineTo(-1.64, 1.10);
+    cabin.closePath();
+    shell(M.carGlass, cabin, 1.70, .03);
+
+    /* the roof skin over the glass, and the pillars down both sides */
+    const roof = new THREE.Shape();
+    roof.moveTo(.34, 1.53);
+    roof.quadraticCurveTo(.04, 1.63, -.36, 1.63);
+    roof.lineTo(-1.02, 1.57);
+    roof.lineTo(-1.00, 1.45);
+    roof.lineTo(-.36, 1.51);
+    roof.quadraticCurveTo(.02, 1.51, .30, 1.43);
+    roof.closePath();
+    shell(M.car, roof, 1.76, .03);
+    [-1, 1].forEach(s => {
+      const x = s * .85;
+      strut(M.car, x, 1.22, 1.10, .36, 1.52);            // A pillar
+      strut(M.car, x, -.30, 1.10, -.32, 1.61, .085, .09);// B pillar
+      strut(M.car, x, -1.60, 1.14, -1.02, 1.55);         // C pillar
+      strut(M.steel, x + s * .015, 1.16, 1.09, -1.58, 1.10, .03, .035);  // window line
+      /* shut lines, door handles, mirror */
+      [[1.02, .46, 1.10], [-.30, .46, 1.10], [-1.46, .98, 1.11]].forEach(([z, y1, y2]) =>
+        strut(M.trim, x + s * .012, z, y1, z, y2, .02, .022));
+      box(g, M.steel, .055, .05, .24, x + s * .035, 1.00, .52);
+      box(g, M.car, .1, .045, .09, x + s * .06, 1.16, .96);
+      box(g, M.car, .11, .1, .17, x + s * .13, 1.15, 1.02);
     });
+    /* shark fin */
+    box(g, M.car, .07, .1, .22, 0, 1.68, -.86);
+
+    /* sill, underbody and bumper rubbing strips — the dark line a car sits on */
+    box(g, M.trim, 1.9, .1, 2.3, 0, .43, -.2);
+    box(g, M.tyre, 1.72, .07, 3.5, 0, .41, 0);
+    box(g, M.trim, 1.78, .16, .1, 0, .5, 2.16);
+    box(g, M.trim, 1.76, .14, .1, 0, .52, -2.14);
+
+    /* face: grille, intake, lamps — and the tail cluster */
+    box(g, M.trim, 1.12, .24, .1, 0, .86, 2.15);
+    box(g, M.steel, 1.14, .035, .05, 0, .94, 2.18);
+    box(g, M.steel, 1.14, .035, .05, 0, .8, 2.18);
+    box(g, M.trim, 1.3, .16, .08, 0, .62, 2.14);
+    [-1, 1].forEach(s => {
+      box(g, M.head, .44, .15, .1, s * .62, .95, 2.1);   // headlamp
+      box(g, M.head, .3, .04, .06, s * .66, .74, 2.12);  // day-running strip
+      box(g, M.tail, .38, .14, .09, s * .66, 1.0, -2.15);
+      box(g, M.steel, .06, .06, .16, s * .5, .45, -2.18); // exhaust tip
+    });
+    box(g, M.tail, 1.2, .05, .06, 0, 1.0, -2.16);        // the strip across the boot
+
+    /* wheels: tyre, rim face and five spokes, tucked inside the arch */
+    [[-1.42], [1.42]].forEach(([z]) => [-1, 1].forEach(s => {
+      const w = new THREE.Group();
+      w.position.set(s * .86, .40, z); w.rotation.z = Math.PI / 2; g.add(w);
+      const part = (mat, geo, y) => { const m = new THREE.Mesh(geo, mat); m.position.y = y;
+        m.castShadow = m.receiveShadow = true; w.add(m); return m; };
+      part(M.tyre, new THREE.CylinderGeometry(.40, .40, .28, 26), 0);
+      part(M.trim, new THREE.CylinderGeometry(.395, .395, .02, 20), -s * .1);
+      part(M.steel, new THREE.CylinderGeometry(.285, .285, .3, 22), 0);
+      part(M.trim, new THREE.CylinderGeometry(.26, .26, .05, 22), s * .13);
+      part(M.steel, new THREE.CylinderGeometry(.085, .085, .06, 12), s * .16);
+      for (let i = 0; i < 5; i++) {
+        const a = i * Math.PI * 2 / 5;
+        const sp = new THREE.Mesh(new THREE.BoxGeometry(.075, .05, .22), M.steel);
+        sp.position.set(Math.sin(a) * .15, s * .145, Math.cos(a) * .15);
+        sp.rotation.y = a; sp.castShadow = true; w.add(sp);
+      }
+    }));
   })();
 
   /* ======================= UPPER FLOOR ======================= */
@@ -863,6 +976,7 @@ const hero = (() => {
     [M.plaster, M.plaster2, M.stone, M.wood, M.woodDark].forEach(m => m.envMapIntensity = envI * .45);
     M.brass.envMapIntensity = envI * 1.2; M.steel.envMapIntensity = envI;
     M.glass.envMapIntensity = envI * 1.8; M.car.envMapIntensity = envI * 1.3;
+    M.head.emissiveIntensity = lamp * .5; M.tail.emissiveIntensity = lamp * .6;   /* lenses keep reading after dark */
     renderer.toneMappingExposure = lerp(1.02, 1.24, night);
 
     const h = Math.floor(hrs), m = Math.round((hrs - h) * 60 / 15) * 15;
@@ -1134,6 +1248,7 @@ const plan = (() => {
   };
 
   const HALF = Math.PI / 2;
+  const picks = [];
   const rooms = ROOMS.map((r, i) => {
     const cx = (r.x0 + r.x1) / 2, cz = (r.z0 + r.z1) / 2;
     const w = r.x1 - r.x0, d = r.z1 - r.z0;
@@ -1142,9 +1257,11 @@ const plan = (() => {
     const floor = new THREE.Mesh(new THREE.BoxGeometry(w - .02, .1, d - .02), FIN[r.fin].clone());
     floor.position.set(cx, -.05, cz); floor.receiveShadow = true; g.add(floor);
 
-    const pick = new THREE.Mesh(new THREE.BoxGeometry(w - .1, 1.3, d - .1),
+    /* a flat footprint, not a 1.3 m volume: tall picks overlap in an iso view, so the
+       nearest hit flipped between neighbours as the model spun — that was the flicker */
+    const pick = new THREE.Mesh(new THREE.BoxGeometry(w - .06, .04, d - .06),
       new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
-    pick.position.set(cx, .65, cz); pick.userData.i = i; g.add(pick);
+    pick.position.set(cx, .02, cz); pick.userData.i = i; g.add(pick); picks.push(pick);
 
     switch (r.n) {
       case 'Living & Dining':
@@ -1187,38 +1304,12 @@ const plan = (() => {
         break;
     }
 
-    /* floating label — a paper plate, sized to its own text */
-    const NAME = '500 40px Inter, Helvetica, sans-serif', AREA = '500 23px "JetBrains Mono", monospace';
-    const c = document.createElement('canvas');
-    let ctx = c.getContext('2d');
-    ctx.font = NAME; const w1 = ctx.measureText(r.n).width;
-    ctx.font = AREA; const w2 = ctx.measureText(r.sqft + ' SQ.FT').width;
-    const PW = Math.ceil(Math.max(w1, w2)) + 60, PH = 124;
-    c.width = PW; c.height = PH; ctx = c.getContext('2d');
-    const rr = (x, y, w2_, h2_, rad) => {
-      if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(x, y, w2_, h2_, rad); return; }
-      ctx.beginPath(); ctx.moveTo(x + rad, y);
-      ctx.arcTo(x + w2_, y, x + w2_, y + h2_, rad); ctx.arcTo(x + w2_, y + h2_, x, y + h2_, rad);
-      ctx.arcTo(x, y + h2_, x, y, rad); ctx.arcTo(x, y, x + w2_, y, rad); ctx.closePath();
-    };
-    rr(2, 2, PW - 4, PH - 4, 26);
-    ctx.fillStyle = 'rgba(10,11,12,.82)'; ctx.fill();
-    ctx.strokeStyle = 'rgba(243,244,245,.2)'; ctx.lineWidth = 2; ctx.stroke();
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.font = NAME; ctx.fillStyle = '#f1f2f3'; ctx.fillText(r.n, PW / 2, 48);
-    ctx.font = AREA; ctx.fillStyle = '#e2663a'; ctx.fillText(r.sqft + ' SQ.FT', PW / 2, 88);
-    const tex = new THREE.CanvasTexture(c); tex.encoding = THREE.sRGBEncoding;
-    tex.minFilter = THREE.LinearFilter; tex.generateMipmaps = false;
-    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0, depthTest: false }));
-    const SH = .62, SW = SH * PW / PH;
-    sp.position.set(cx, 1.72, cz); sp.scale.set(SW, SH, 1); sp.renderOrder = 10; root.add(sp);
-
     const ol = new THREE.LineSegments(
       new THREE.EdgesGeometry(new THREE.BoxGeometry(w - .06, 1.16, d - .06)),
       new THREE.LineBasicMaterial({ color: 0xe2663a, transparent: true, opacity: 0, depthTest: false }));
     ol.position.set(cx, .58, cz); ol.renderOrder = 9; root.add(ol);
 
-    return { g, floor, sp, ol, i, base: FIN[r.fin].color.clone() };
+    return { g, floor, ol, i, cx, cz, base: FIN[r.fin].color.clone() };
   });
 
   /* ---- side UI ---- */
@@ -1250,17 +1341,17 @@ const plan = (() => {
   const ISO = new THREE.Vector3(15, 14, 17), TOP = new THREE.Vector3(0, 30, .02);
 
   const ray = new THREE.Raycaster(), pt = new THREE.Vector2();
-  let over = false, dragP = false, lx = 0, spin = 0;
+  let over = false, dragP = false, lx = 0, spin = 0, moved = false;
   canvas.addEventListener('pointermove', e => {
     const r = canvas.getBoundingClientRect();
     pt.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
-    over = true;
+    over = true; moved = true;
     if (dragP) { spin += (e.clientX - lx) * .006; lx = e.clientX; auto = false; }
   });
   canvas.addEventListener('pointerleave', () => over = false);
   canvas.addEventListener('pointerdown', e => { dragP = true; lx = e.clientX; auto = false; canvas.setPointerCapture(e.pointerId); });
-  canvas.addEventListener('pointerup', () => dragP = false);
-  canvas.addEventListener('pointercancel', () => dragP = false);
+  canvas.addEventListener('pointerup', e => { dragP = false; if (e.pointerType !== 'mouse') over = false; });
+  canvas.addEventListener('pointercancel', () => { dragP = false; over = false; });
 
   let t = 0, visible = false;
   new IntersectionObserver(([e]) => visible = e.isIntersecting, { threshold: .05 })
@@ -1272,6 +1363,14 @@ const plan = (() => {
   const isoH = (FIT.r * Math.sin(FIT.elev) + FIT.yTop * Math.cos(FIT.elev)) * FIT.pad;
   const topW = 7.8 * FIT.pad, topH = 5.8 * FIT.pad;
   let topZoom = 1.2;
+
+  /* the room label is a DOM plate pinned over the canvas — real text, so it stays
+     crisp and stays legible at phone sizes instead of shrinking with the model */
+  const lblEl = document.getElementById('planLabel'),
+        lblName = document.getElementById('planLabelName'),
+        lblArea = document.getElementById('planLabelArea');
+  const anchor = new THREE.Vector3();
+  let lblShown = -1, lblOp = 0, lblW = 0, lblH = 0;
 
   const DIM = new THREE.Color(0x2e3036), OFF = new THREE.Color(0x000000), ON = new THREE.Color(0x33200f);
   function frame() {
@@ -1288,9 +1387,12 @@ const plan = (() => {
       camera.updateProjectionMatrix();
     }
 
-    if (over && !dragP) {
+    /* only re-pick when the pointer itself moved — otherwise the idle spin drags
+       rooms under a stationary cursor and the selection (and its label) thrashes */
+    if (over && !dragP && moved) {
+      moved = false;
       ray.setFromCamera(pt, camera);
-      const hit = ray.intersectObjects(root.children, true).find(o => o.object.userData.i !== undefined);
+      const hit = ray.intersectObjects(picks, false)[0];
       if (hit && hit.object.userData.i !== focus) { auto = false; select(hit.object.userData.i); }
     }
 
@@ -1310,12 +1412,31 @@ const plan = (() => {
       const on = o.i === focus;
       o.floor.material.color.lerp(on ? o.base : DIM.clone().lerp(o.base, .45), .1);
       o.floor.material.emissive.lerp(on ? ON : OFF, .1);
-      o.sp.material.opacity = lerp(o.sp.material.opacity, on ? 1 : 0, .14);
-      o.sp.visible = o.sp.material.opacity > .02;
       o.ol.material.opacity = lerp(o.ol.material.opacity, on ? .65 : 0, .1);
     });
 
     renderer.render(scene, camera);
+
+    /* fade the plate out, swap its text, fade it back in — a change of room reads
+       as one move rather than two labels crossing over each other */
+    if (lblShown !== focus) {
+      lblOp = lerp(lblOp, 0, .24);
+      if (lblOp < .06) {
+        lblShown = focus;
+        lblName.textContent = ROOMS[focus].n;
+        lblArea.textContent = ROOMS[focus].sqft + ' sq.ft';
+        lblW = lblEl.offsetWidth; lblH = lblEl.offsetHeight;
+      }
+    } else if (lblShown >= 0) lblOp = lerp(lblOp, 1, .16);
+
+    if (lblShown >= 0) {
+      const o = rooms[lblShown];
+      anchor.set(o.cx, 1.5, o.cz).applyMatrix4(root.matrixWorld).project(camera);
+      const px = clamp((anchor.x * .5 + .5) * w, lblW / 2 + 10, w - lblW / 2 - 10);
+      const py = clamp((-anchor.y * .5 + .5) * h, lblH + 10, h - 10);
+      lblEl.style.transform = `translate(${px.toFixed(1)}px,${py.toFixed(1)}px) translate(-50%,-100%)`;
+      lblEl.style.opacity = lblOp.toFixed(3);
+    }
   }
   return { frame };
 })();
