@@ -326,6 +326,14 @@ section{position:relative}
 .plan__view button:hover{color:var(--ink)}
 .plan__view button.on{background:var(--ink);color:var(--on-ink)}
 .plan__hint{position:absolute;bottom:15px;left:18px;color:var(--muted)}
+/* the floating room plate — positioned from JS, sized in CSS pixels so it reads
+   at any screen size (it used to be a sprite that shrank with the model) */
+.plan__label{position:absolute;left:0;top:0;z-index:2;opacity:0;pointer-events:none;
+  padding:7px 12px 8px;border-radius:11px;text-align:center;white-space:nowrap;
+  background:rgba(10,11,12,.84);border:1px solid rgba(243,244,245,.2);
+  backdrop-filter:blur(8px);box-shadow:0 14px 34px -18px rgba(0,0,0,.95);will-change:transform,opacity}
+.plan__label b{display:block;font-weight:500;font-size:12.5px;line-height:1.15;letter-spacing:-.01em;color:var(--ink)}
+.plan__label i{display:block;margin-top:3px;font-style:normal;font-size:8.5px;letter-spacing:.13em;color:var(--acc)}
 .plan__side{position:relative;z-index:2;display:flex;flex-direction:column;gap:16px;min-height:100%}
 .roomcard{border:1px solid var(--line-soft);border-radius:18px;padding:26px;background:var(--surface);flex:none}
 .roomcard h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:30px;margin:13px 0 6px;letter-spacing:-.01em}
@@ -500,6 +508,9 @@ section{position:relative}
   .plan__hint{bottom:16px;left:14px;right:14px;font-size:9.5px;letter-spacing:.11em}
   .plan__view{top:10px;right:10px}
   .plan__view button{padding:7px 12px;font-size:10px}
+  .plan__label{padding:6px 10px 7px;border-radius:9px}
+  .plan__label b{font-size:11.5px}
+  .plan__label i{font-size:8px;letter-spacing:.11em;margin-top:2px}
   .nav__links,.nav .btn{display:none}
   .burger{display:grid}
   .menu{display:flex}
