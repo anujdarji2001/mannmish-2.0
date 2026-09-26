@@ -46,7 +46,7 @@
 <header class="nav" id="nav">
   <div class="wrap nav__in">
     <a class="brand" href="index.html">
-      <img src="assets/logo.jpg" alt="Mannmish Design Studio" />
+      <img src="assets/logo-crop.jpg" alt="Mannmish Design Studio" />
       <span><b>Mannmish</b><span>Design Studio</span></span>
     </a>
     <nav class="nav__links mono">
@@ -251,6 +251,7 @@
 
 <!-- ══ expertise ══ -->
 <section class="services on-light tint" id="services">
+  <div class="sgrid" aria-hidden="true"></div>
   <div class="wrap">
     <div class="shead rv">
       <div>
@@ -374,7 +375,7 @@
     <div class="foot__grid">
       <div class="foot__brand">
         <a class="brand" href="index.html">
-          <img src="assets/logo.jpg" alt="" />
+          <img src="assets/logo-crop.jpg" alt="Mannmish Design Studio" />
           <span><b>Mannmish</b><span>Design Studio</span></span>
         </a>
         <p>Where vision meets craftsmanship. We create spaces that tell stories, blending contemporary design with timeless elegance.</p>
@@ -1093,7 +1094,7 @@ const plan = (() => {
     key.shadow.bias = -0.0012; key.shadow.radius = 2;
   }
   scene.add(key);
-  const fill = new THREE.DirectionalLight(0xe2663a, .34); fill.position.set(-14, 8, -11); scene.add(fill);
+  const fill = new THREE.DirectionalLight(0xc88f40, .34); fill.position.set(-14, 8, -11); scene.add(fill);
 
   /* ---- a light maquette on a dark plinth, like a museum model ---- */
   const M = {

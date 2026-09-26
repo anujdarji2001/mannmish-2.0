@@ -44,7 +44,7 @@
 <header class="nav" id="nav">
   <div class="wrap nav__in">
     <a class="brand" href="index.html">
-      <img src="assets/logo.jpg" alt="Mannmish Design Studio" />
+      <img src="assets/logo-crop.jpg" alt="Mannmish Design Studio" />
       <span><b>Mannmish</b><span>Design Studio</span></span>
     </a>
     <nav class="nav__links mono">
@@ -211,7 +211,7 @@
     <div class="foot__grid">
       <div class="foot__brand">
         <a class="brand" href="index.html">
-          <img src="assets/logo.jpg" alt="" />
+          <img src="assets/logo-crop.jpg" alt="" />
           <span><b>Mannmish</b><span>Design Studio</span></span>
         </a>
         <p>Where vision meets craftsmanship. We create spaces that tell stories, blending contemporary design with timeless elegance.</p>
@@ -265,7 +265,7 @@
     const name = v('#f-name'), mail = v('#f-mail'), sub = v('#f-sub'), msg = v('#f-msg');
     if (!name || !mail || !sub || !msg) {
       f.querySelectorAll('[required]').forEach(el => {
-        el.closest('.field').style.borderBottomColor = el.value.trim() ? '' : 'var(--clay)';
+        el.closest('.field').style.borderBottomColor = el.value.trim() ? '' : 'var(--acc)';
       });
       return;
     }
